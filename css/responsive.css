@@ -1,0 +1,268 @@
+/* ==========================================================================
+   SONALI PORTFOLIO — RESPONSIVE STYLESHEET
+   Mobile-first breakpoints layered on top of style.css.
+   Breakpoints: 375px, 425px, 768px (tablet), 1024px (laptop),
+                1280px / 1440px / 1920px (desktop)
+   ========================================================================== */
+
+/* ==========================================================================
+   375px — Small phones: minor spacing/type refinements
+   ========================================================================== */
+@media (min-width: 375px) {
+  .hero__visual {
+    width: 260px;
+    height: 260px;
+  }
+
+  .stats-grid {
+    gap: 18px;
+  }
+}
+
+/* ==========================================================================
+   425px — Large phones
+   ========================================================================== */
+@media (min-width: 425px) {
+  .container {
+    padding-inline: 24px;
+  }
+
+  .cert-grid {
+    gap: 16px;
+  }
+
+  .hero__cta {
+    flex-wrap: nowrap;
+  }
+}
+
+/* ==========================================================================
+   768px — TABLET
+   ========================================================================== */
+@media (min-width: 768px) {
+  .container {
+    padding-inline: 32px;
+  }
+
+  .section {
+    padding-block: 88px;
+  }
+
+  /* Navbar: reveal full menu, hide hamburger */
+  .navbar__toggle {
+    display: none;
+  }
+
+  .navbar__menu {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    height: auto;
+  }
+
+  /* Hero: two-column layout begins */
+  .hero__inner {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    padding-top: 20px;
+  }
+
+  .hero__content {
+    text-align: left;
+    max-width: 54%;
+  }
+
+  .hero__eyebrow {
+    margin-inline: 0;
+  }
+
+  .hero__description {
+    margin-inline: 0;
+  }
+
+  .hero__cta {
+    justify-content: flex-start;
+  }
+
+  .hero__visual {
+    width: 300px;
+    height: 300px;
+    flex-shrink: 0;
+  }
+
+  .scroll-hint {
+    display: block;
+  }
+
+  /* About stats stay 3-col but breathe more */
+  .stats-grid {
+    gap: 24px;
+  }
+
+  .stat-card {
+    padding: 28px 16px;
+  }
+
+  /* Tech stack: two categories per row */
+  .tech-stack__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Projects: two per row */
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Education: two per row */
+  .edu-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Certifications: four per row */
+  .cert-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Contact: form + info side by side */
+  .contact__grid {
+    grid-template-columns: 0.8fr 1.2fr;
+    align-items: start;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Footer: single row */
+  .footer__inner {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+/* ==========================================================================
+   1024px — LAPTOP
+   ========================================================================== */
+@media (min-width: 1024px) {
+  .hero {
+    padding-top: calc(var(--navbar-height) + 40px);
+    padding-bottom: 100px;
+  }
+
+  .hero__content {
+    max-width: 560px;
+  }
+
+  .hero__visual {
+    width: 340px;
+    height: 340px;
+  }
+
+  /* Tech stack: three categories per row */
+  .tech-stack__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Projects: three per row (matches design mock) */
+  .project-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+
+
+}
+
+/* ==========================================================================
+   1280px — DESKTOP
+   ========================================================================== */
+@media (min-width: 1280px) {
+  .container {
+    padding-inline: 40px;
+  }
+
+  .hero__title {
+    font-size: 3.4rem;
+  }
+
+  .hero__visual {
+    width: 380px;
+    height: 380px;
+  }
+
+  .float-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.25rem;
+  }
+
+  /* Timeline gets a little more breathing room on wide screens */
+  .timeline {
+    padding-left: 36px;
+  }
+
+  .timeline__dot {
+    left: -43px;
+  }
+}
+
+/* ==========================================================================
+   1440px — LARGE DESKTOP
+   ========================================================================== */
+@media (min-width: 1440px) {
+  :root {
+    --container-width: 1280px;
+  }
+
+  .about__text {
+    font-size: 1.08rem;
+  }
+
+  .stats-grid,
+  .edu-grid {
+    gap: 28px;
+  }
+
+  .project-grid {
+    gap: 28px;
+  }
+}
+
+/* ==========================================================================
+   1920px — EXTRA-LARGE DESKTOP
+   ========================================================================== */
+@media (min-width: 1920px) {
+  :root {
+    --container-width: 1440px;
+  }
+
+  html {
+    font-size: 18px;
+  }
+
+  .hero__visual {
+    width: 420px;
+    height: 420px;
+  }
+}
+
+/* ==========================================================================
+   PRINT (bonus: keeps resume-style output clean if printed)
+   ========================================================================== */
+@media print {
+  .navbar, .scroll-progress,
+  .back-to-top, .float-icon, .hero__bg-grid, .hero__gradient,
+  .contact__form, .theme-toggle {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+}
