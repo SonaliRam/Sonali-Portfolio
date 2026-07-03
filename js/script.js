@@ -17,7 +17,7 @@
    11. Back To Top Button
    ========================================================================== */
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   initThemeToggle();
   initMobileNav();
   initNavbarScrollState();
@@ -34,31 +34,34 @@ document.addEventListener('DOMContentLoaded', () => {
    1. THEME TOGGLE
    ========================================================================== */
 function initThemeToggle() {
-  const STORAGE_KEY = 'sonali-portfolio-theme';
-  const toggleBtn = document.getElementById('themeToggle');
+  const STORAGE_KEY = "sonali-portfolio-theme";
+  const toggleBtn = document.getElementById("themeToggle");
   const root = document.documentElement;
 
   // Determine initial theme: saved preference > system preference > dark default
   const savedTheme = localStorage.getItem(STORAGE_KEY);
-  const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-  const initialTheme = savedTheme || (prefersLight ? 'light' : 'dark');
+  const prefersLight = window.matchMedia(
+    "(prefers-color-scheme: light)",
+  ).matches;
+  const initialTheme = savedTheme || (prefersLight ? "light" : "dark");
 
   applyTheme(initialTheme);
 
-  toggleBtn.addEventListener('click', () => {
-    const current = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
-    const next = current === 'light' ? 'dark' : 'light';
+  toggleBtn.addEventListener("click", () => {
+    const current =
+      root.getAttribute("data-theme") === "light" ? "light" : "dark";
+    const next = current === "light" ? "dark" : "light";
     applyTheme(next);
     localStorage.setItem(STORAGE_KEY, next);
   });
 
   function applyTheme(theme) {
-    if (theme === 'light') {
-      root.setAttribute('data-theme', 'light');
-      toggleBtn.setAttribute('aria-pressed', 'true');
+    if (theme === "light") {
+      root.setAttribute("data-theme", "light");
+      toggleBtn.setAttribute("aria-pressed", "true");
     } else {
-      root.removeAttribute('data-theme');
-      toggleBtn.setAttribute('aria-pressed', 'false');
+      root.removeAttribute("data-theme");
+      toggleBtn.setAttribute("aria-pressed", "false");
     }
   }
 }
@@ -67,24 +70,24 @@ function initThemeToggle() {
    2. MOBILE NAV TOGGLE
    ========================================================================== */
 function initMobileNav() {
-  const toggle = document.getElementById('navToggle');
-  const menu = document.getElementById('navMenu');
+  const toggle = document.getElementById("navToggle");
+  const menu = document.getElementById("navMenu");
 
   if (!toggle || !menu) return;
 
-  toggle.addEventListener('click', () => {
-    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!isOpen));
-    menu.classList.toggle('is-open');
-    document.body.classList.toggle('nav-locked', !isOpen);
+  toggle.addEventListener("click", () => {
+    const isOpen = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!isOpen));
+    menu.classList.toggle("is-open");
+    document.body.classList.toggle("nav-locked", !isOpen);
   });
 
   // Close menu when a link is tapped (mobile)
-  menu.querySelectorAll('.navbar__link').forEach((link) => {
-    link.addEventListener('click', () => {
-      toggle.setAttribute('aria-expanded', 'false');
-      menu.classList.remove('is-open');
-      document.body.classList.remove('nav-locked');
+  menu.querySelectorAll(".navbar__link").forEach((link) => {
+    link.addEventListener("click", () => {
+      toggle.setAttribute("aria-expanded", "false");
+      menu.classList.remove("is-open");
+      document.body.classList.remove("nav-locked");
     });
   });
 }
@@ -93,22 +96,22 @@ function initMobileNav() {
    3. STICKY NAVBAR SHADOW + ACTIVE LINK HIGHLIGHTING
    ========================================================================== */
 function initNavbarScrollState() {
-  const navbar = document.getElementById('navbar');
-  const navLinks = document.querySelectorAll('.navbar__link');
+  const navbar = document.getElementById("navbar");
+  const navLinks = document.querySelectorAll(".navbar__link");
   const sections = Array.from(navLinks)
-    .map((link) => document.querySelector(link.getAttribute('href')))
+    .map((link) => document.querySelector(link.getAttribute("href")))
     .filter(Boolean);
 
   if (!navbar) return;
 
   const onScroll = () => {
-    navbar.classList.toggle('is-scrolled', window.scrollY > 12);
+    navbar.classList.toggle("is-scrolled", window.scrollY > 12);
     highlightActiveSection();
   };
 
   const highlightActiveSection = () => {
     const scrollPos = window.scrollY + 120;
-    let currentId = sections[0] ? sections[0].id : '';
+    let currentId = sections[0] ? sections[0].id : "";
 
     sections.forEach((section) => {
       if (section.offsetTop <= scrollPos) {
@@ -117,12 +120,12 @@ function initNavbarScrollState() {
     });
 
     navLinks.forEach((link) => {
-      const isActive = link.getAttribute('href') === `#${currentId}`;
-      link.classList.toggle('is-active', isActive);
+      const isActive = link.getAttribute("href") === `#${currentId}`;
+      link.classList.toggle("is-active", isActive);
     });
   };
 
-  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 }
 
@@ -130,12 +133,12 @@ function initNavbarScrollState() {
    4. SMOOTH SCROLL OFFSET (accounts for sticky navbar height)
    ========================================================================== */
 function initSmoothScroll() {
-  const navbar = document.getElementById('navbar');
+  const navbar = document.getElementById("navbar");
   const links = document.querySelectorAll('a[href^="#"]');
 
   links.forEach((link) => {
-    link.addEventListener('click', (e) => {
-      const targetId = link.getAttribute('href');
+    link.addEventListener("click", (e) => {
+      const targetId = link.getAttribute("href");
       if (targetId.length <= 1) return; // ignore bare "#"
 
       const target = document.querySelector(targetId);
@@ -143,12 +146,13 @@ function initSmoothScroll() {
 
       e.preventDefault();
       const navHeight = navbar ? navbar.offsetHeight : 0;
-      const targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight - 12;
+      const targetPosition =
+        target.getBoundingClientRect().top + window.scrollY - navHeight - 12;
 
-      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+      window.scrollTo({ top: targetPosition, behavior: "smooth" });
 
       // Move focus for accessibility after the scroll settles
-      window.setTimeout(() => target.setAttribute('tabindex', '-1'), 400);
+      window.setTimeout(() => target.setAttribute("tabindex", "-1"), 400);
       window.setTimeout(() => target.focus({ preventScroll: true }), 450);
     });
   });
@@ -158,29 +162,38 @@ function initSmoothScroll() {
    5. SCROLL PROGRESS BAR
    ========================================================================== */
 function initScrollProgress() {
-  const bar = document.getElementById('scrollProgress');
+  const bar = document.getElementById("scrollProgress");
   if (!bar) return;
 
   const updateProgress = () => {
-    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = scrollHeight > 0 ? (window.scrollY / scrollHeight) * 100 : 0;
+    const scrollHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
+    const progress =
+      scrollHeight > 0 ? (window.scrollY / scrollHeight) * 100 : 0;
     bar.style.width = `${progress}%`;
   };
 
-  window.addEventListener('scroll', updateProgress, { passive: true });
-  window.addEventListener('resize', updateProgress);
+  window.addEventListener("scroll", updateProgress, { passive: true });
+  window.addEventListener("resize", updateProgress);
   updateProgress();
 }
-
 
 /* ==========================================================================
    7. TYPING EFFECT (hero tagline rotates through Sonali's specialties)
    ========================================================================== */
 function initTypingEffect() {
-  const el = document.getElementById('typingText');
+  const el = document.getElementById("typingText");
   if (!el) return;
 
-  const phrases = ['Shopify stores.', 'Shopify apps.', 'eCommerce experiences.', 'custom themes.'];
+  const phrases = [
+    "React applications.",
+    "Shopify stores.",
+    "Shopify apps.",
+    "Java backends.",
+    "SQL databases.",
+    "eCommerce solutions.",
+    "custom themes in Shopify.",
+  ];
   const typeSpeed = 65;
   const eraseSpeed = 38;
   const holdTime = 1600;
@@ -190,7 +203,7 @@ function initTypingEffect() {
   let isDeleting = false;
 
   // Respect reduced-motion users: show the first phrase statically
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     el.textContent = phrases[0];
     return;
   }
@@ -227,14 +240,16 @@ function initTypingEffect() {
    8. ANIMATED COUNTERS (About stats: 3+, 20+, 15+)
    ========================================================================== */
 function initCounters() {
-  const counters = document.querySelectorAll('.stat-card__number[data-count]');
+  const counters = document.querySelectorAll(".stat-card__number[data-count]");
   if (!counters.length) return;
 
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
 
   const runCounter = (el) => {
-    const target = parseInt(el.getAttribute('data-count'), 10) || 0;
-    const suffix = el.getAttribute('data-suffix') || '';
+    const target = parseInt(el.getAttribute("data-count"), 10) || 0;
+    const suffix = el.getAttribute("data-suffix") || "";
 
     if (prefersReducedMotion) {
       el.textContent = `${target}${suffix}`;
@@ -265,7 +280,7 @@ function initCounters() {
         }
       });
     },
-    { threshold: 0.6 }
+    { threshold: 0.6 },
   );
 
   counters.forEach((counter) => observer.observe(counter));
@@ -275,13 +290,17 @@ function initCounters() {
    9. SCROLL REVEAL ANIMATIONS (fade-up / fade-left / fade-right / zoom-in)
    ========================================================================== */
 function initScrollReveal() {
-  const targets = document.querySelectorAll('.fade-up, .fade-left, .fade-right, .zoom-in');
+  const targets = document.querySelectorAll(
+    ".fade-up, .fade-left, .fade-right, .zoom-in",
+  );
   if (!targets.length) return;
 
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
 
   if (prefersReducedMotion) {
-    targets.forEach((el) => el.classList.add('is-visible'));
+    targets.forEach((el) => el.classList.add("is-visible"));
     return;
   }
 
@@ -291,12 +310,15 @@ function initScrollReveal() {
         if (entry.isIntersecting) {
           // Slight stagger for elements revealing together (e.g. grid cards)
           const delay = Math.min(index * 60, 240);
-          window.setTimeout(() => entry.target.classList.add('is-visible'), delay);
+          window.setTimeout(
+            () => entry.target.classList.add("is-visible"),
+            delay,
+          );
           obs.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.15, rootMargin: '0px 0px -60px 0px' }
+    { threshold: 0.15, rootMargin: "0px 0px -60px 0px" },
   );
 
   targets.forEach((el) => observer.observe(el));
@@ -306,87 +328,87 @@ function initScrollReveal() {
    10. CONTACT FORM VALIDATION
    ========================================================================== */
 function initContactForm() {
-  const form = document.getElementById('contactForm');
+  const form = document.getElementById("contactForm");
   if (!form) return;
 
-  const nameField = document.getElementById('name');
-  const emailField = document.getElementById('email');
-  const messageField = document.getElementById('message');
-  const status = document.getElementById('formStatus');
+  const nameField = document.getElementById("name");
+  const emailField = document.getElementById("email");
+  const messageField = document.getElementById("message");
+  const status = document.getElementById("formStatus");
 
   const errors = {
-    name: document.getElementById('nameError'),
-    email: document.getElementById('emailError'),
-    message: document.getElementById('messageError'),
+    name: document.getElementById("nameError"),
+    email: document.getElementById("emailError"),
+    message: document.getElementById("messageError"),
   };
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   function setError(field, message) {
-    const group = field.closest('.form-group');
+    const group = field.closest(".form-group");
     errors[field.name].textContent = message;
-    group.classList.toggle('has-error', Boolean(message));
+    group.classList.toggle("has-error", Boolean(message));
   }
 
   function validateName() {
     const value = nameField.value.trim();
     if (!value) {
-      setError(nameField, 'Please enter your name.');
+      setError(nameField, "Please enter your name.");
       return false;
     }
     if (value.length < 2) {
-      setError(nameField, 'Name looks too short.');
+      setError(nameField, "Name looks too short.");
       return false;
     }
-    setError(nameField, '');
+    setError(nameField, "");
     return true;
   }
 
   function validateEmail() {
     const value = emailField.value.trim();
     if (!value) {
-      setError(emailField, 'Please enter your email.');
+      setError(emailField, "Please enter your email.");
       return false;
     }
     if (!emailPattern.test(value)) {
-      setError(emailField, 'Please enter a valid email address.');
+      setError(emailField, "Please enter a valid email address.");
       return false;
     }
-    setError(emailField, '');
+    setError(emailField, "");
     return true;
   }
 
   function validateMessage() {
     const value = messageField.value.trim();
     if (!value) {
-      setError(messageField, 'Please write a short message.');
+      setError(messageField, "Please write a short message.");
       return false;
     }
     if (value.length < 10) {
-      setError(messageField, 'Message should be at least 10 characters.');
+      setError(messageField, "Message should be at least 10 characters.");
       return false;
     }
-    setError(messageField, '');
+    setError(messageField, "");
     return true;
   }
 
   // Validate on blur for immediate feedback
-  nameField.addEventListener('blur', validateName);
-  emailField.addEventListener('blur', validateEmail);
-  messageField.addEventListener('blur', validateMessage);
+  nameField.addEventListener("blur", validateName);
+  emailField.addEventListener("blur", validateEmail);
+  messageField.addEventListener("blur", validateMessage);
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
-    status.textContent = '';
-    status.style.color = '';
+    status.textContent = "";
+    status.style.color = "";
 
     const isNameValid = validateName();
     const isEmailValid = validateEmail();
     const isMessageValid = validateMessage();
 
     if (!isNameValid || !isEmailValid || !isMessageValid) {
-      status.textContent = 'Please fix the highlighted fields.';
-      status.style.color = 'var(--danger)';
+      status.textContent = "Please fix the highlighted fields.";
+      status.style.color = "var(--danger)";
       return;
     }
 
@@ -394,13 +416,13 @@ function initContactForm() {
     // Replace this block with a real fetch() call to your form endpoint.
     const submitBtn = form.querySelector('button[type="submit"]');
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
+    submitBtn.textContent = "Sending...";
 
     window.setTimeout(() => {
-      status.textContent = 'Message sent! I\u2019ll get back to you soon.';
-      status.style.color = 'var(--success)';
+      status.textContent = "Message sent! I\u2019ll get back to you soon.";
+      status.style.color = "var(--success)";
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Send Message';
+      submitBtn.textContent = "Send Message";
       form.reset();
     }, 900);
   });
@@ -410,10 +432,10 @@ function initContactForm() {
    11. BACK TO TOP BUTTON
    ========================================================================== */
 function initBackToTop() {
-  const btn = document.getElementById('backToTop');
+  const btn = document.getElementById("backToTop");
   if (!btn) return;
 
-  btn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 }
