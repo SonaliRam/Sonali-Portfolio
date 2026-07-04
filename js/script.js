@@ -38,6 +38,8 @@ function initThemeToggle() {
   const toggleBtn = document.getElementById("themeToggle");
   const root = document.documentElement;
 
+   if (!toggleBtn) return;
+
   // Determine initial theme: saved preference > system preference > dark default
   const savedTheme = localStorage.getItem(STORAGE_KEY);
   const prefersLight = window.matchMedia(
@@ -90,6 +92,14 @@ function initMobileNav() {
       document.body.classList.remove("nav-locked");
     });
   });
+
+   document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    menu.classList.remove("is-open");
+    toggle.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("nav-locked");
+  }
+});
 }
 
 /* ==========================================================================
@@ -148,12 +158,13 @@ function initSmoothScroll() {
       const navHeight = navbar ? navbar.offsetHeight : 0;
       const targetPosition =
         target.getBoundingClientRect().top + window.scrollY - navHeight - 12;
-
-      window.scrollTo({ top: targetPosition, behavior: "smooth" });
-
-      // Move focus for accessibility after the scroll settles
-      window.setTimeout(() => target.setAttribute("tabindex", "-1"), 400);
-      window.setTimeout(() => target.focus({ preventScroll: true }), 450);
+       
+       window.scrollTo({ top: targetPosition, behavior: "smooth" });
+       
+       setTimeout(() => {
+          target.setAttribute("tabindex", "-1");
+          target.focus({ preventScroll: true });
+       }, 400);
     });
   });
 }
@@ -184,16 +195,15 @@ function initScrollProgress() {
 function initTypingEffect() {
   const el = document.getElementById("typingText");
   if (!el) return;
-
-  const phrases = [
-    "React applications.",
-    "Shopify stores.",
-    "Shopify apps.",
-    "Java backends.",
-    "SQL databases.",
-    "eCommerce solutions.",
-    "custom themes in Shopify.",
-  ];
+   
+   const phrases = [
+      "Shopify Stores.",
+      "Custom Shopify Apps.",
+      "eCommerce Solutions.",
+      "React Applications.",
+      "Modern Web Applications.",
+   ];
+   
   const typeSpeed = 65;
   const eraseSpeed = 38;
   const holdTime = 1600;
@@ -248,7 +258,7 @@ function initCounters() {
   ).matches;
 
   const runCounter = (el) => {
-    const target = parseInt(el.getAttribute("data-count"), 10) || 0;
+    const target = parseFloat(el.getAttribute("data-count")) || 0;
     const suffix = el.getAttribute("data-suffix") || "";
 
     if (prefersReducedMotion) {
@@ -262,8 +272,12 @@ function initCounters() {
     const step = (now) => {
       const progress = Math.min((now - startTime) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
-      const value = Math.round(eased * target);
-      el.textContent = `${value}${suffix}`;
+      const value =
+         target % 1 !== 0
+         ? (eased * target).toFixed(1)
+         : Math.round(eased * target);
+       
+       el.textContent = `${value}${suffix}`;
 
       if (progress < 1) requestAnimationFrame(step);
     };
@@ -416,14 +430,24 @@ function initContactForm() {
     // Replace this block with a real fetch() call to your form endpoint.
     const submitBtn = form.querySelector('button[type="submit"]');
     submitBtn.disabled = true;
+    submitBtn.classList.add("btn--loading");
     submitBtn.textContent = "Sending...";
 
     window.setTimeout(() => {
       status.textContent = "Message sent! I\u2019ll get back to you soon.";
       status.style.color = "var(--success)";
       submitBtn.disabled = false;
+      submitBtn.classList.remove("btn--loading");
       submitBtn.textContent = "Send Message";
       form.reset();
+       
+      Object.values(errors).forEach((error) => {
+         error.textContent = "";
+      });
+       
+      form
+         .querySelectorAll(".form-group")
+         .forEach((group) => group.classList.remove("has-error"));
     }, 900);
   });
 }
@@ -436,6 +460,20 @@ function initBackToTop() {
   if (!btn) return;
 
   btn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
+    const navbar = document.getElementById("navbar");
+
+    if (navbar) {
+      navbar.setAttribute("tabindex", "-1");
+
+      setTimeout(() => {
+         navbar.focus();
+         navbar.removeAttribute("tabindex");
+      }, 400);
+    }
   });
 }
