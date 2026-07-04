@@ -40,7 +40,7 @@
   --text-secondary: #a9afc3;
   --text-muted: #6e7591;
   --pill-bg: rgba(255, 255, 255, 0.04);
-  --card-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.55);
+  --card-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.45);
   --gradient-hero:
     radial-gradient(
       circle at 20% 20%,
@@ -86,7 +86,7 @@
   --text-secondary: #565b78;
   --text-muted: #8a8fa8;
   --pill-bg: rgba(17, 20, 45, 0.04);
-  --card-shadow: 0 20px 40px -22px rgba(30, 34, 70, 0.18);
+  --card-shadow: 0 24px 50px -24px rgba(30, 34, 70, 0.16);
   --gradient-hero:
     radial-gradient(
       circle at 20% 20%,
@@ -207,7 +207,24 @@ textarea:focus-visible {
 }
 
 .section {
+  position: relative;
   padding-block: 72px;
+}
+
+.section:not(.hero)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(100%, var(--container-width));
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--border-color),
+    transparent
+  );
 }
 
 .visually-hidden {
@@ -295,7 +312,7 @@ textarea:focus-visible {
 }
 
 .btn--primary:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.02);
   box-shadow: 0 16px 30px -12px rgba(108, 92, 231, 0.7);
 }
 
@@ -306,7 +323,7 @@ textarea:focus-visible {
 }
 
 .btn--secondary:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.02);
   border-color: var(--accent-soft);
 }
 
@@ -319,7 +336,7 @@ textarea:focus-visible {
 .btn--ghost:hover {
   color: var(--text-primary);
   border-color: var(--accent-soft);
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.02);
 }
 
 .btn--sm {
@@ -329,6 +346,22 @@ textarea:focus-visible {
 
 .btn--block {
   width: 100%;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+.theme-toggle:focus-visible,
+.navbar__toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
 /* ==========================================================================
@@ -343,6 +376,15 @@ textarea:focus-visible {
   transition:
     opacity 0.8s ease,
     transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.project-card:hover,
+.cert-card:hover,
+.edu-card:hover,
+.tech-category:hover,
+.stat-card:hover,
+.timeline__item:hover {
+  transition-duration: 0.35s;
 }
 
 .fade-up {
@@ -456,6 +498,7 @@ textarea:focus-visible {
   position: sticky;
   top: 0;
   z-index: 1000;
+  isolation: isolate;
   background: rgba(11, 14, 26, 0.72);
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
@@ -470,7 +513,9 @@ textarea:focus-visible {
 }
 
 .navbar.is-scrolled {
-  box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 16px 40px -22px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
 }
 
 .navbar__inner {
@@ -764,6 +809,9 @@ body.nav-locked {
   object-fit: cover;
   border-radius: 50%;
   border: 3px solid var(--bg-surface);
+  box-shadow:
+    0 0 0 4px rgba(108, 92, 231, 0.15),
+    0 20px 40px rgba(0, 0, 0, 0.25);
 }
 
 .float-icon {
@@ -867,8 +915,11 @@ body.nav-locked {
     box-shadow var(--transition-fast);
 }
 img.icon-emojis {
-  width: 25px;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
 }
+
 .stat-card:hover {
   transform: translateY(-4px);
   border-color: var(--accent-soft);
@@ -907,6 +958,16 @@ img.icon-emojis {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   padding: 22px;
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.tech-category:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-soft);
+  box-shadow: var(--card-shadow);
 }
 
 .tech-category__title {
@@ -949,8 +1010,19 @@ img.icon-emojis {
 }
 
 .pill__icon {
-  font-size: 0.95rem;
-  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.pill__icon img,
+.pill__icon svg {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
 }
 
 /* ==========================================================================
@@ -967,6 +1039,8 @@ img.icon-emojis {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
   transition:
     transform var(--transition-base),
     box-shadow var(--transition-base),
@@ -998,6 +1072,19 @@ img.icon-emojis {
 
 .project-card__body {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.project-card__actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.project-card__actions .btn {
+  flex: 1;
 }
 
 .project-card__title {
@@ -1047,11 +1134,25 @@ img.icon-emojis {
 
 .timeline__item {
   position: relative;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.timeline__item:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-soft);
+  box-shadow: var(--card-shadow);
 }
 
 .timeline__dot {
   position: absolute;
-  left: -35px;
+  left: -42px;
   top: 4px;
   width: 14px;
   height: 14px;
@@ -1189,9 +1290,17 @@ img.icon-emojis {
 }
 
 .cert-card__icon {
-  display: inline-flex;
-  font-size: 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
   margin-bottom: 10px;
+}
+
+.cert-card__icon img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
 }
 
 .cert-card__title {
@@ -1276,6 +1385,15 @@ img.icon-emojis {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: 26px;
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.contact__form:hover {
+  border-color: var(--accent-soft);
+  box-shadow: var(--card-shadow);
 }
 
 .form-row {
@@ -1292,7 +1410,7 @@ img.icon-emojis {
 
 .form-group input,
 .form-group textarea {
-  background: var(--bg-surface-2);
+  background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--border-color-strong);
   border-radius: var(--radius-sm);
   padding: 13px 14px;
