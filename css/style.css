@@ -41,6 +41,7 @@
   --text-muted: #6e7591;
   --pill-bg: rgba(255, 255, 255, 0.04);
   --card-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.45);
+  --card-border-glow: rgba(108, 92, 231, 0.15);
   --gradient-hero:
     radial-gradient(
       circle at 20% 20%,
@@ -87,6 +88,7 @@
   --text-muted: #8a8fa8;
   --pill-bg: rgba(17, 20, 45, 0.04);
   --card-shadow: 0 24px 50px -24px rgba(30, 34, 70, 0.16);
+  --card-border-glow: rgba(108, 92, 231, 0.08);
   --gradient-hero:
     radial-gradient(
       circle at 20% 20%,
@@ -125,6 +127,7 @@ body {
   font-family: var(--font-body);
   background-color: var(--bg-base);
   color: var(--text-primary);
+   -webkit-tap-highlight-color: transparent;
   line-height: 1.6;
   overflow-x: hidden;
   transition: var(--transition-theme);
@@ -192,10 +195,12 @@ h4 {
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
-textarea:focus-visible {
+textarea:focus-visible,
+.theme-toggle:focus-visible,
+.navbar__toggle:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: var(--radius-sm);
+  border-radius: 6px;
 }
 
 /* ==========================================================================
@@ -348,6 +353,27 @@ textarea:focus-visible {
 
 .btn--block {
   width: 100%;
+}
+
+.btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn--loading {
+  position: relative;
+  color: transparent;
+}
+
+.btn--loading::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
 }
 
 ::selection {
@@ -794,6 +820,18 @@ body.nav-locked {
   display: flex;
   align-items: center;
   justify-content: center;
+  isolation: isolate;
+}
+
+.hero__visual::before {
+  content: "";
+  position: absolute;
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  background: rgba(108, 92, 231, 0.22);
+  filter: blur(50px);
+  z-index: -1;
 }
 
 .hero__ring {
@@ -802,7 +840,9 @@ body.nav-locked {
   border-radius: 50%;
   border: 1px solid var(--border-color-strong);
   padding: 14px;
-  animation: pulseRing 3.2s ease-out infinite;
+  animation:
+    pulseRing 3.2s ease-out infinite,
+    spin 60s linear infinite;
 }
 
 .hero__photo {
@@ -813,7 +853,15 @@ body.nav-locked {
   border: 3px solid var(--bg-surface);
   box-shadow:
     0 0 0 4px rgba(108, 92, 231, 0.15),
-    0 20px 40px rgba(0, 0, 0, 0.25);
+    0 0 40px rgba(108, 92, 231, 0.22),
+    0 24px 50px rgba(0, 0, 0, 0.30);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.hero__photo:hover {
+  transform: scale(1.03);
 }
 
 .float-icon {
@@ -824,11 +872,22 @@ body.nav-locked {
   width: 42px;
   height: 42px;
   border-radius: var(--radius-md);
-  background: var(--bg-elevated);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-color-strong);
-  box-shadow: var(--card-shadow);
+  box-shadow:
+    var(--card-shadow),
+    0 0 20px rgba(108, 92, 231, 0.12);
   font-size: 1.1rem;
   animation: floatSlow 4s ease-in-out infinite;
+  transition:
+  transform var(--transition-fast),
+  box-shadow var(--transition-fast);
+}
+
+.float-icon:hover {
+  transform: scale(1.08);
 }
 
 .float-icon--1 {
@@ -958,6 +1017,7 @@ img.icon-emojis {
 .tech-category {
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
+  box-shadow: inset 0 1px 0 var(--card-border-glow);
   border-radius: var(--radius-md);
   padding: 22px;
   transition:
@@ -1039,6 +1099,7 @@ img.icon-emojis {
 .project-card {
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
+  box-shadow: inset 0 1px 0 var(--card-border-glow);
   border-radius: var(--radius-lg);
   overflow: hidden;
   display: flex;
@@ -1059,17 +1120,34 @@ img.icon-emojis {
   aspect-ratio: 16 / 10;
   overflow: hidden;
   background: var(--bg-surface-2);
+  position: relative;
+}
+
+.project-card__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.12),
+    transparent 45%
+  );
+  pointer-events: none;
 }
 
 .project-card__media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition:
+    transform 0.5s ease,
+    filter 0.5s ease;
+  filter: brightness(0.96);
 }
 
 .project-card:hover .project-card__media img {
   transform: scale(1.06);
+  filter: brightness(1);
 }
 
 .project-card__body {
@@ -1115,11 +1193,6 @@ img.icon-emojis {
   border: 1px solid var(--border-color);
   padding: 4px 10px;
   border-radius: var(--radius-pill);
-}
-
-.project-card__actions {
-  display: flex;
-  gap: 10px;
 }
 
 /* ==========================================================================
@@ -1231,6 +1304,7 @@ img.icon-emojis {
   align-items: flex-start;
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
+  box-shadow: inset 0 1px 0 var(--card-border-glow);
   border-radius: var(--radius-md);
   padding: 22px;
   transition:
@@ -1241,6 +1315,7 @@ img.icon-emojis {
 .edu-card:hover {
   transform: translateY(-4px);
   border-color: var(--accent-soft);
+  box-shadow: var(--card-shadow);
 }
 
 .edu-card__icon {
@@ -1276,6 +1351,7 @@ img.icon-emojis {
 .cert-card {
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
+  box-shadow: inset 0 1px 0 var(--card-border-glow);
   border-radius: var(--radius-md);
   padding: 20px;
   text-align: center;
@@ -1295,13 +1371,13 @@ img.icon-emojis {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40px;
-  margin-bottom: 10px;
+  height: 64px;
+  margin-bottom: 16px;
 }
 
 .cert-card__icon img {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   object-fit: contain;
 }
 
@@ -1346,6 +1422,11 @@ img.icon-emojis {
   display: flex;
   gap: 14px;
   align-items: flex-start;
+  transition: transform var(--transition-fast);
+}
+
+.contact__item:hover {
+  transform: translateX(6px);
 }
 
 .contact__icon {
@@ -1385,6 +1466,7 @@ img.icon-emojis {
   gap: 16px;
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
+  box-shadow: inset 0 1px 0 var(--card-border-glow);
   border-radius: var(--radius-lg);
   padding: 26px;
   transition:
