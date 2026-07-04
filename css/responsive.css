@@ -74,7 +74,7 @@
 
   .hero__content {
     text-align: left;
-    max-width: 54%;
+    max-width: 52%;
   }
 
   .hero__eyebrow {
@@ -90,8 +90,8 @@
   }
 
   .hero__visual {
-    width: 300px;
-    height: 300px;
+    width: 320px;
+    height: 320px;
     flex-shrink: 0;
   }
 
@@ -100,9 +100,11 @@
   }
 
   /* About stats stay 3-col but breathe more */
-  .stats-grid {
-    gap: 24px;
-  }
+   .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 720px;
+   }
 
   .stat-card {
     padding: 28px 16px;
@@ -115,7 +117,8 @@
 
   /* Projects: two per row */
   .project-grid {
-    grid-template-columns: repeat(2, 1fr);
+     grid-template-columns: repeat(2, 1fr);
+     gap: 22px;
   }
 
   /* Education: two per row */
@@ -123,9 +126,9 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* Certifications: four per row */
+  /* Certifications: two per row */
   .cert-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   /* Contact: form + info side by side */
@@ -163,7 +166,12 @@
     width: 340px;
     height: 340px;
   }
-
+   
+   .stats-grid {
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 1000px;
+   }
+   
   /* Tech stack: three categories per row */
   .tech-stack__grid {
     grid-template-columns: repeat(3, 1fr);
@@ -172,10 +180,13 @@
   /* Projects: three per row (matches design mock) */
   .project-grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
   }
 
-
-
+   /* Certifications: four per row */
+   .cert-grid {
+      grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 /* ==========================================================================
