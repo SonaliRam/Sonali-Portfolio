@@ -56,7 +56,7 @@
     radial-gradient(circle at 50% 90%, rgba(34, 211, 238, 0.1), transparent 45%);
 
   /* Layout tokens */
-  --container-width: 1180px;
+  --container-width: 1240px;
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 22px;
@@ -127,10 +127,12 @@ body {
   font-family: var(--font-body);
   background-color: var(--bg-base);
   color: var(--text-primary);
-   -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
   line-height: 1.6;
   overflow-x: hidden;
-  transition: var(--transition-theme);
+  transition:
+     background-color 0.45s ease,
+     color 0.45s ease;
 }
 
 img {
@@ -215,7 +217,7 @@ textarea:focus-visible,
 
 .section {
   position: relative;
-  padding-block: 72px;
+  padding-block: 88px;
 }
 
 .section:not(.hero)::before {
@@ -838,7 +840,7 @@ body.nav-locked {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  border: 1px solid var(--border-color-strong);
+  border: 1px solid rgba(108, 92, 231, 0.25);
   padding: 14px;
   animation:
     pulseRing 3.2s ease-out infinite,
@@ -852,9 +854,9 @@ body.nav-locked {
   border-radius: 50%;
   border: 3px solid var(--bg-surface);
   box-shadow:
-    0 0 0 4px rgba(108, 92, 231, 0.15),
-    0 0 40px rgba(108, 92, 231, 0.22),
-    0 24px 50px rgba(0, 0, 0, 0.30);
+     0 0 0 4px rgba(108, 92, 231, 0.15),
+     0 0 50px rgba(108, 92, 231, 0.28),
+     0 30px 60px rgba(0, 0, 0, 0.35);
   transition:
     transform var(--transition-base),
     box-shadow var(--transition-base);
@@ -872,13 +874,13 @@ body.nav-locked {
   width: 42px;
   height: 42px;
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-color-strong);
   box-shadow:
-    var(--card-shadow),
-    0 0 20px rgba(108, 92, 231, 0.12);
+     0 16px 30px -16px rgba(0, 0, 0, 0.4),
+     0 0 24px rgba(108, 92, 231, 0.14);
   font-size: 1.1rem;
   animation: floatSlow 4s ease-in-out infinite;
   transition:
@@ -887,7 +889,7 @@ body.nav-locked {
 }
 
 .float-icon:hover {
-  transform: scale(1.08);
+  transform: translateY(-4px) scale(1.08);
 }
 
 .float-icon--1 {
@@ -915,9 +917,6 @@ body.nav-locked {
   top: 46%;
   right: -30px;
   animation-delay: 2.1s;
-  font-size: 0.8rem;
-  width: 30px;
-  height: 30px;
 }
 
 .scroll-hint {
@@ -958,9 +957,9 @@ body.nav-locked {
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  max-width: 720px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 18px;
+  max-width: 900px;
   margin-inline: auto;
 }
 
@@ -976,8 +975,8 @@ body.nav-locked {
     box-shadow var(--transition-fast);
 }
 img.icon-emojis {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   object-fit: contain;
 }
 
@@ -1027,9 +1026,10 @@ img.icon-emojis {
 }
 
 .tech-category:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   border-color: var(--accent-soft);
-  box-shadow: var(--card-shadow);
+  box-shadow:
+    0 24px 50px -22px rgba(0, 0, 0, 0.45);
 }
 
 .tech-category__title {
@@ -1049,26 +1049,28 @@ img.icon-emojis {
 .pill {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 8px 14px;
+  gap: 8px;
+  padding: 10px 16px;
   background: var(--pill-bg);
   border: 1px solid var(--border-color-strong);
   border-radius: var(--radius-pill);
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   font-weight: 500;
   color: var(--text-secondary);
   transition:
     transform var(--transition-fast),
     background-color var(--transition-fast),
     color var(--transition-fast),
-    border-color var(--transition-fast);
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
 }
 
 .pill:hover {
-  transform: translateY(-3px) scale(1.03);
+  transform: translateY(-3px);
   background: rgba(108, 92, 231, 0.12);
   border-color: var(--accent-soft);
   color: var(--text-primary);
+  box-shadow: 0 8px 20px -10px rgba(108, 92, 231, 0.35);
 }
 
 .pill__icon {
@@ -1082,8 +1084,8 @@ img.icon-emojis {
 
 .pill__icon img,
 .pill__icon svg {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   object-fit: contain;
 }
 
@@ -1111,8 +1113,10 @@ img.icon-emojis {
 }
 
 .project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--card-shadow);
+  transform: translateY(-8px);
+  box-shadow:
+    0 28px 60px -24px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(108, 92, 231, 0.15);
   border-color: var(--accent-soft);
 }
 
@@ -1220,9 +1224,10 @@ img.icon-emojis {
 }
 
 .timeline__item:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   border-color: var(--accent-soft);
-  box-shadow: var(--card-shadow);
+  box-shadow:
+    0 24px 50px -22px rgba(0, 0, 0, 0.45);
 }
 
 .timeline__dot {
@@ -1313,9 +1318,10 @@ img.icon-emojis {
 }
 
 .edu-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   border-color: var(--accent-soft);
-  box-shadow: var(--card-shadow);
+  box-shadow:
+    0 24px 50px -22px rgba(0, 0, 0, 0.45);
 }
 
 .edu-card__icon {
@@ -1362,22 +1368,28 @@ img.icon-emojis {
 }
 
 .cert-card:hover {
-  transform: translateY(-5px) scale(1.02);
+  transform: translateY(-6px) scale(1.03);
   border-color: var(--accent-soft);
-  box-shadow: var(--card-shadow);
+  box-shadow:
+    0 24px 50px -22px rgba(0, 0, 0, 0.45);
 }
 
 .cert-card__icon {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 64px;
-  margin-bottom: 16px;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 18px;
+  border-radius: 18px;
+  background: var(--pill-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
 }
 
 .cert-card__icon img {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   object-fit: contain;
 }
 
@@ -1476,6 +1488,7 @@ img.icon-emojis {
 }
 
 .contact__form:hover {
+  transform: translateY(-4px);
   border-color: var(--accent-soft);
   box-shadow: var(--card-shadow);
 }
@@ -1576,9 +1589,10 @@ img.icon-emojis {
 }
 
 .footer__social a:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px) scale(1.08);
   border-color: var(--accent-soft);
   background: var(--pill-bg);
+  box-shadow: 0 10px 20px -10px rgba(108, 92, 231, 0.35);
 }
 
 .back-to-top {
