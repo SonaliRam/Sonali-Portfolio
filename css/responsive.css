@@ -266,3 +266,15 @@
     color: #000;
   }
 }
+
+/* Mobile touch improvements */
+@media (hover: none) and (pointer: coarse) {
+  .navbar__link,
+  .theme-toggle,
+  .footer__social a,
+  .back-to-top,
+  .btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
