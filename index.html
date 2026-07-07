@@ -1,1237 +1,1232 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sonali Ram | Full Stack Shopify Developer</title>
-    <meta
-      name="description"
-      content="Sonali Ram is a Full Stack Shopify Developer specializing in Shopify theme development, custom apps, React, Node.js, Remix, and scalable eCommerce solutions."
-    />
-    <meta
-      name="keywords"
-      content="Shopify Developer, Full Stack Developer, Shopify Themes, Shopify Apps, Portfolio, Sonali"
-    />
-    <meta name="author" content="Sonali" />
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Sonali Ram | Full Stack Shopify Developer" />
-    <meta
-      property="og:description"
-      content="Full Stack Shopify Developer specializing in Shopify themes, custom apps, React, Node.js, Remix, and scalable eCommerce solutions."
-      />
-    <meta property="og:type" content="website" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sonali Ram | Full Stack Developer</title>
+  <meta name="description"
+    content="Sonali Ram is a Full Stack Developer specializing in Shopify theme development, custom apps, React, Node.js, Remix, and scalable eCommerce solutions." />
+  <meta name="keywords"
+    content="Shopify Developer, Full Stack Developer, Shopify Themes, Shopify Apps, Portfolio, Sonali" />
+  <meta name="author" content="Sonali" />
 
-    <!-- Favicon -->
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sonali Ram | Full Stack Developer" />
+  <meta property="og:description"
+    content="Full Stack Developer specializing in Shopify themes, custom apps, React, Node.js, Remix, and scalable eCommerce solutions." />
+  <meta property="og:type" content="website" />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-      />
-    
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-      />
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/responsive.css" />
-  </head>
-  <body>
-    <!-- Skip link for accessibility -->
-    <a class="skip-link" href="#main-content">Skip to main content</a>
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
 
-    <!-- Scroll progress bar -->
-    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
 
-    <!-- Custom cursor (desktop only, controlled via JS) -->
-    <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
-    <div class="cursor-outline" id="cursorOutline" aria-hidden="true"></div>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
 
-    <!-- ================= HEADER / NAVBAR ================= -->
-    <header class="navbar" id="navbar">
-      <nav class="navbar__inner" aria-label="Primary navigation">
-        <a href="#home" class="navbar__logo" aria-label="Sonali home">
-          <span class="navbar__logo-icon">&lt;/&gt;</span> Sonali
-        </a>
+<body>
+  <!-- Skip link for accessibility -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-        <button
-          class="navbar__toggle"
-          id="navToggle"
-          aria-label="Toggle navigation menu"
-          aria-expanded="false"
-          aria-controls="navMenu"
-        >
-          <span></span><span></span><span></span>
-        </button>
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
-        <ul class="navbar__menu" id="navMenu">
-          <li><a href="#home" class="navbar__link is-active">Home</a></li>
-          <li><a href="#about" class="navbar__link">About</a></li>
-          <li><a href="#skills" class="navbar__link">Skills</a></li>
-          <li><a href="#projects" class="navbar__link">Projects</a></li>
-          <li><a href="#experience" class="navbar__link">Experience</a></li>
-          <li><a href="#education" class="navbar__link">Education</a></li>
-          <li><a href="#contact" class="navbar__link">Contact</a></li>
-        </ul>
+  <!-- Custom cursor (desktop only, controlled via JS) -->
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-outline" id="cursorOutline" aria-hidden="true"></div>
 
-        <button
-          class="theme-toggle"
-          id="themeToggle"
-          type="button"
-          aria-label="Switch between dark and light mode"
-          aria-pressed="false"
-        >
-          <svg
-            class="theme-toggle__icon theme-toggle__icon--moon"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <svg
-            class="theme-toggle__icon theme-toggle__icon--sun"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            aria-hidden="true"
-          >
-            <circle
-              cx="12"
-              cy="12"
-              r="5"
-              stroke="currentColor"
-              stroke-width="2"
-            />
-            <path
-              d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-          </svg>
-        </button>
-      </nav>
-    </header>
+  <!-- ================= HEADER / NAVBAR ================= -->
+  <header class="navbar" id="navbar">
+    <nav class="navbar__inner" aria-label="Primary navigation">
+      <button class="navbar__toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false"
+        aria-controls="navMenu">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="#home" class="navbar__logo" aria-label="Sonali home">
+        <span class="navbar__logo-icon">&lt;/&gt;</span> Sonali
+      </a>
 
-    <main id="main-content">
-      <!-- ================= HERO SECTION ================= -->
-      <section class="hero" id="home" aria-label="Introduction">
-        <div class="hero__bg-grid" aria-hidden="true"></div>
-        <div class="hero__gradient" aria-hidden="true"></div>
 
-        <div class="hero__inner">
-          <div class="hero__content fade-up">
-            <p class="hero__eyebrow">FULL STACK SHOPIFY DEVELOPER</p>
-            <h1 class="hero__title">
-              Hi, I'm <span class="hero__name">Sonali Ram</span>
-            </h1>
-            <p class="hero__tagline">
-              I build modern, high-performance
-              <span class="typing-text" id="typingText"></span
-              ><span class="typing-cursor" aria-hidden="true">|</span>
-            </p>
-            <p class="hero__description">
-              Full Stack Shopify Developer with hands-on experience in Shopify theme
-              development, custom app development, API integrations, and scalable web
-              applications using React, Node.js, Remix, Spring Boot, and PostgreSQL.
-              Passionate about building high-performance eCommerce solutions and solving
-              real business challenges through clean and maintainable code.
-            </p>
+      <ul class="navbar__menu" id="navMenu">
+        <li><a href="#about" class="navbar__link">About</a></li>
+        <li><a href="#skills" class="navbar__link">Skills</a></li>
+        <li><a href="#projects" class="navbar__link">Projects</a></li>
+        <li><a href="#experience" class="navbar__link">Experience</a></li>
+        <li><a href="#education" class="navbar__link">Education</a></li>
+        <li><a href="#contact" class="navbar__link">Contact</a></li>
+      </ul>
 
-            <div class="hero__cta">
-              <a href="#projects" class="btn btn--primary">View Projects</a>
-              <a
-                href="assets/Sonali Ram ( Full Stack Shopify Dev) .pdf"
-                class="btn btn--secondary"
-                download
-                >Download Resume</a
-              >
-            </div>
-          </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch between dark and light mode"
+        aria-pressed="false">
+        <svg class="theme-toggle__icon theme-toggle__icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+          aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <svg class="theme-toggle__icon theme-toggle__icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none"
+          aria-hidden="true">
+          <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" />
+          <path
+            d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+    </nav>
+  </header>
 
-          <div class="hero__visual fade-right">
-            <div class="hero__ring" aria-hidden="true">
-              <img
-                class="hero__photo"
-                src="images/profile.jpg"
-                alt="Portrait of Sonali Ram, Full Stack Shopify Developer"
-                width="320"
-                height="320"
-                loading="eager"
-              />
-            </div>
+  <main id="main-content">
+    <!-- ================= HERO SECTION ================= -->
+    <section class="hero" id="home" aria-label="Introduction">
+      <div class="hero__bg-grid" aria-hidden="true"></div>
+      <div class="hero__gradient" aria-hidden="true"></div>
 
-            <!-- Floating tech icons -->
-            <span
-              class="float-icon float-icon--1"
-              aria-hidden="true"
-              title="Shopify"
-            >
-              <img src="./assets/shopify-icon.svg" alt="" class="icon-emojis"
-            /></span>
-            <span
-              class="float-icon float-icon--6"
-              aria-hidden="true"
-              title="Shopify"
-            >
-              <img
-                src="./assets/javascript-programming-language-icon.svg"
-                alt=""
-                class="icon-emojis"
-            /></span>
-            <span
-              class="float-icon float-icon--2"
-              aria-hidden="true"
-              title="React"
-            >
-              <img
-                src="./assets/react-js-icon.svg"
-                alt=""
-                class="icon-emojis"
-              />
-            </span>
-           <span
-             class="float-icon float-icon--3"
-             aria-hidden="true"
-             title="Node.js"
-          >
-             <img
-               src="./assets/nodedotjs.svg"
-               alt=""
-               class="icon-emojis"
-               />
-           </span>
-            
-            <span
-              class="float-icon float-icon--4"
-              aria-hidden="true"
-              title="PostgreSQL"
-            >
-              <img
-                src="./assets/postgresql.svg"
-                alt="PostgreSQL"
-                class="icon-emojis"
-              />
-            </span>
-            
-            <span
-              class="float-icon float-icon--5"
-              aria-hidden="true"
-              title="Java"
-            >
-              <img
-                src="./assets/java-programming-language-icon.svg"
-                alt=""
-                class="icon-emojis"
-              />
-            </span>
-          </div>
-        </div>
-
-        <a
-          href="#about"
-          class="scroll-hint"
-          aria-label="Scroll to About section"
-        >
-          <span></span>
-        </a>
-      </section>
-
-      <!-- ================= ABOUT SECTION ================= -->
-      <section class="about section" id="about" aria-labelledby="about-heading">
-        <div class="container">
-          <h2 id="about-heading" class="visually-hidden">About Sonali</h2>
-          
-          <p class="about__text fade-up">
-            I'm a Full Stack Shopify Developer with hands-on experience building
-            custom Shopify themes, storefronts, and applications for international
-            clients. I specialize in Shopify development, API integrations, and
-            scalable web applications using React, Node.js, Remix, Spring Boot, and
-            PostgreSQL.
-
-            Over the past 1.5+ years, I've delivered 100+ UI enhancements, developed
-            custom eCommerce solutions, and built features that improve performance,
-            automation, and user experience. I enjoy solving real business problems
-            through clean, maintainable, and user-centric solutions.
+      <div class="hero__inner">
+        <div class="hero__content fade-up">
+          <p class="hero__eyebrow">FULL STACK DEVELOPER</p>
+          <h1 class="hero__title">
+            Hi, I'm <span class="hero__name">Sonali Ram</span>
+          </h1>
+          <p class="hero__tagline">
+            I build modern, high-performance
           </p>
-          
-          <div class="stats-grid fade-up" role="list">
-            <div class="stat-card" role="listitem">
-              <span class="stat-card__number">1.5+</span>
-              <span class="stat-card__label">Years Experience</span>
-            </div>
-            
-            <div class="stat-card" role="listitem">
-              <span class="stat-card__number">100+</span>
-              <span class="stat-card__label">UI Enhancements Delivered</span>
-            </div>
-            
-            <div class="stat-card" role="listitem">
-              <span class="stat-card__number">15+</span>
-              <span class="stat-card__label">Projects Delivered</span>
-            </div>
+          <span class="typing-text" id="typingText"></span><span class="typing-cursor" aria-hidden="true">|</span>
+          <p class="hero__description">
+            Full Stack Developer with hands-on experience in Shopify theme
+            development, custom app development, API integrations, and scalable web
+            applications using React, Node.js, Remix, Spring Boot, and PostgreSQL.
+            Passionate about building high-performance eCommerce solutions and solving
+            real business challenges through clean and maintainable code.
+          </p>
 
-            <div class="stat-card" role="listitem">
-              <span class="stat-card__number">2+</span>
-              <span class="stat-card__label">Companies Worked With</span>
-            </div>
+          <div class="hero__cta">
+            <a href="#projects" class="btn btn--primary">View Projects</a>
+            <a href="assets/Sonali Ram ( Full Stack Shopify Dev) .pdf" class="btn btn--secondary" download>Download
+              Resume</a>
           </div>
         </div>
-      </section>
 
-      <!-- ================= TECH STACK SECTION ================= -->
-      <section
-        class="tech-stack section"
-        id="skills"
-        aria-labelledby="tech-stack-heading"
-      >
-        <div class="container">
-          <p class="section-eyebrow fade-up">Tech Stack</p>
-          
-          <h2 id="tech-stack-heading" class="visually-hidden">
-            Skills and Technologies
-          </h2>
-          
+        <div class="hero__visual fade-right">
+          <div class="hero__ring" aria-hidden="true">
+            <img class="hero__photo"
+              src="https://media.licdn.com/dms/image/v2/D4D03AQEtpqYRG9HOVA/profile-displayphoto-crop_800_800/B4DZxVIky9IoAI-/0/1770954839612?e=1784764800&v=beta&t=Jlr77H6nbhFW8OUnFt6g1zRIlDuNuX2g5BLyo0bHqzU"
+              alt="Portrait of Sonali Ram, Full Stack Developer" width="320" height="320" loading="eager" />
+          </div>
+
+          <!-- Floating tech icons -->
+          <span class="float-icon float-icon--1" aria-hidden="true" title="Shopify">
+            <img src="./assets/shopify-icon.svg" alt="" class="icon-emojis" /></span>
+          <span class="float-icon float-icon--6" aria-hidden="true" title="Shopify">
+            <img src="./assets/javascript-programming-language-icon.svg" alt="" class="icon-emojis" /></span>
+          <span class="float-icon float-icon--2" aria-hidden="true" title="React">
+            <img src="./assets/react-js-icon.svg" alt="" class="icon-emojis" />
+          </span>
+          <span class="float-icon float-icon--3" aria-hidden="true" title="Node.js">
+            <img src="./assets/spring-boot-icon.svg" alt="" class="icon-emojis" />
+          </span>
+
+          <span class="float-icon float-icon--4" aria-hidden="true" title="PostgreSQL">
+            <img src="./assets/postgresql-icon.svg" alt="PostgreSQL" class="icon-emojis" />
+          </span>
+
+          <span class="float-icon float-icon--5" aria-hidden="true" title="Java">
+            <img src="./assets/webflow-icon.svg" alt="" class="icon-emojis" />
+          </span>
+        </div>
+      </div>
+
+      <a href="#about" class="scroll-hint" aria-label="Scroll to About section">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- ================= ABOUT SECTION ================= -->
+    <section class="about section" id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <h2 id="about-heading" class="visually-hidden">About Sonali</h2>
+
+        <p class="about__text fade-up">
+          I'm a Full Stack Developer with hands-on experience building
+          custom Shopify themes, storefronts, and applications for international
+          clients. I specialize in Shopify development, API integrations, and
+          scalable web applications using React, Node.js, Remix, Spring Boot, and
+          PostgreSQL.
+
+          Over the past 1.7+ years, I've delivered 100+ UI enhancements, developed
+          custom eCommerce solutions, and built features that improve performance,
+          automation, and user experience. I enjoy solving real business problems
+          through clean, maintainable, and user-centric solutions.
+        </p>
+
+        <div class="stats-grid fade-up" role="list">
+          <div class="stat-card" role="listitem">
+            <span class="stat-card__number">1.7+</span>
+            <span class="stat-card__label">Years Experience</span>
+          </div>
+
+          <div class="stat-card" role="listitem">
+            <span class="stat-card__number">100+</span>
+            <span class="stat-card__label">UI Enhancements Delivered</span>
+          </div>
+
+          <div class="stat-card" role="listitem">
+            <span class="stat-card__number">15+</span>
+            <span class="stat-card__label">Projects Delivered</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TECH STACK SECTION ================= -->
+    <section class="tech-stack section" id="skills" aria-labelledby="tech-stack-heading">
+      <div class="container">
+        <p class="section-eyebrow fade-up">Tech Stack</p>
+
+        <h2 id="tech-stack-heading" class="visually-hidden">
+          Skills and Technologies
+        </h2>
+
         <div class="tech-stack__grid">
-          
+
           <!-- Frontend -->
           <div class="tech-category fade-up">
             <h3 class="tech-category__title">Frontend</h3>
-            
+
             <ul class="pill-list">
               <li class="pill">
-                <span class="pill__icon">
-                  <img src="./assets/html5.svg" alt="HTML" />
-                </span>
+
                 HTML
               </li>
-              
+
               <li class="pill">
-                <span class="pill__icon">
-                  <img src="./assets/css.svg" alt="CSS" />
-                </span>
+
                 CSS
               </li>
-              
+
               <li class="pill">
-                <span class="pill__icon">
-                  <img
-                    src="./assets/javascript-programming-language-icon.svg"
-                    alt="JavaScript"
-                    />
-                </span>
+
                 JavaScript
               </li>
 
               <li class="pill">
-                <span class="pill__icon">
-                  <img src="./assets/react-js-icon.svg" alt="React" />
-                </span>
+
                 React
-             </li>
-              
+              </li>
+
               <li class="pill">
-                <span class="pill__icon">
-                  <img src="./assets/tailwindcss.svg" alt="Tailwind CSS" />
-                </span>
+
                 Tailwind CSS
               </li>
             </ul>
           </div>
-          
+
           <!-- CMS Platforms -->
           <div class="tech-category fade-up">
             <h3 class="tech-category__title">CMS Platforms</h3>
-            
+
             <ul class="pill-list">
               <li class="pill">
-                <span class="pill__icon">
-                  <img src="./assets/shopify-icon.svg" alt="Liquid" />
-                </span>
+
                 Liquid
               </li>
-              
+
               <li class="pill">
-                <span class="pill__icon">
-                  <img src="./assets/shopify-icon.svg" alt="Shopify" />
-                </span>
+
                 Shopify APIs
               </li>
-              
+
               <li class="pill">
-                <span class="pill__icon">
-                  <i class="fa-solid fa-puzzle-piece"></i>
-                </span>
+
                 Polaris
               </li>
-              
+
               <li class="pill">
-                <span class="pill__icon">
-                  <i class="fa-solid fa-link"></i>
-                </span>
+
                 App Bridge
               </li>
-              
+
               <li class="pill">
-                <span class="pill__icon">
-                  <i class="fa-solid fa-plug"></i>
-                </span>
+
                 Webhooks
               </li>
-              
+
               <li class="pill">
-                <span class="pill__icon">
-                  <i class="fa-solid fa-store"></i>
-                </span>
+
                 Storefront API
               </li>
-              
+
               <li class="pill">
-                <span class="pill__icon">
-                  <i class="fa-solid fa-key"></i>
-                </span>
+
                 Admin API
               </li>
-              
+
               <li class="pill">
-                <span class="pill__icon">
-                  <img src="./assets/remix.svg" alt="Remix" />
-                </span>
+
                 Remix
               </li>
-              
+
               <li class="pill">
-                <span class="pill__icon">
-                  <img src="./assets/graphql.svg" alt="GraphQL" />
-                </span>
+
                 GraphQL API
               </li>
-              
+
               <li class="pill">
-                <span class="pill__icon">
-                  <i class="fa-solid fa-screwdriver-wrench"></i>
-                </span>
+
                 Shopify CLI
               </li>
             </ul>
           </div>
-          
+
           <!-- Backend -->
           <div class="tech-category fade-up">
             <h3 class="tech-category__title">Backend</h3>
-            
+
             <ul class="pill-list">
               <li class="pill">
-                <span class="pill__icon">
-                  <img src="./assets/nodedotjs.svg" alt="Node.js" />
-                </span>
+
                 Node.js
               </li>
-              
+
               <li class="pill">
-                <span class="pill__icon">
-                  <img src="./assets/express.svg" alt="Express" />
-                </span>
+
                 Express.js
               </li>
-              
+
               <li class="pill">
-                <span class="pill__icon">
-                  <img src="./assets/springboot.svg" alt="Spring Boot" />
-                </span>
+
                 Java Spring Boot
               </li>
-              
+
               <li class="pill">
-                <span class="pill__icon">
-                  <img src="./assets/hibernate.svg" alt="Hibernate" />
-                </span>
+
                 Hibernate
               </li>
             </ul>
           </div>
-          
+
           <!-- Database -->
           <div class="tech-category fade-up">
             <h3 class="tech-category__title">Database</h3>
-            
+
             <ul class="pill-list">
               <li class="pill">
-                <span class="pill__icon">
-                  <img src="./assets/postgresql.svg" alt="PostgreSQL" />
-                </span>
+
                 PostgreSQL
               </li>
             </ul>
           </div>
-          
+
           <!-- Tools -->
           <div class="tech-category fade-up">
             <h3 class="tech-category__title">Tools</h3>
-            
+
             <ul class="pill-list">
               <li class="pill">
-                <span class="pill__icon">
-                  <i class="fa-brands fa-git-alt"></i>
-                </span>
+
                 Git
               </li>
-              
+
               <li class="pill">
-                <span class="pill__icon">
-                  <img src="./assets/github.svg" alt="GitHub" />
-                </span>
+
                 GitHub
               </li>
-              
+
               <li class="pill">
-                <span class="pill__icon">
-                  <img src="./assets/vscode-icon.svg" alt="VS Code" />
-                </span>
+
                 VS Code
               </li>
-              
+
               <li class="pill">
-                <span class="pill__icon">
-                  <img src="./assets/postman.svg" alt="Postman" />
-                </span>
+
                 Postman
               </li>
-              
+
               <li class="pill">
-                <span class="pill__icon">
-                  <img src="./assets/vercel.svg" alt="Vercel" />
-                </span>
+
                 Vercel
               </li>
-              
+
               <li class="pill">
-                <span class="pill__icon">
-                  <img src="./assets/netlify.svg" alt="Netlify" />
-                </span>
+
                 Netlify
               </li>
             </ul>
           </div>
-        
-        </div>
-        </div>
-      </section>
 
-      <!-- ================= FEATURED PROJECTS SECTION ================= -->
-      <section
-        class="projects section"
-        id="projects"
-        aria-labelledby="projects-heading"
-      >
-        <div class="container">
-          <div class="section-header fade-up">
-            <p class="section-eyebrow">Featured Projects</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FEATURED PROJECTS SECTION ================= -->
+    <section class="projects section" id="projects" aria-labelledby="projects-heading">
+      <div class="container">
+        <div class="section-header fade-up">
+          <p class="section-eyebrow">Featured Projects</p>
+        </div>
+        <h2 id="projects-heading" class="visually-hidden">Featured Projects</h2>
+
+        <!-- ============ SHOPIFY PROJECTS (10 → Swiper) ============ -->
+        <div class="project-category">
+          <div class="project-category__header fade-up">
+            <h3 class="project-category__title">Shopify Projects</h3>
+            <p class="project-category__desc">
+              Custom Shopify themes and storefronts built for eCommerce brands across
+              fashion, health, and lifestyle industries.
+            </p>
           </div>
-          
-          <h2 id="projects-heading" class="visually-hidden">
-            Featured Projects
-          </h2>
-          
+
+          <div class="project-swiper-wrap fade-up">
+            <div class="swiper project-swiper" id="shopifyProjectsSwiper">
+              <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                  <article class="project-card">
+                    <div class="project-card__media">
+                      <img src="./assets/bludimonds.png" alt="Blu Diamonds Shopify store screenshot" loading="lazy"
+                        width="400" height="260" />
+                    </div>
+                    <div class="project-card__body">
+                      <h4 class="project-card__title">Blu Diamonds</h4>
+                      <p class="project-card__desc">Custom Shopify storefront for a fine jewelry brand with a
+                        conversion-focused shopping experience.</p>
+                      <ul class="project-card__tags">
+                        <li>Shopify</li>
+                        <li>Liquid</li>
+                        <li>Sections</li>
+                      </ul>
+                      <div class="project-card__actions">
+                        <a href="https://bludiamonds.com/" target="_blank" rel="noopener noreferrer"
+                          class="btn btn--sm btn--primary">Preview</a>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+
+                <div class="swiper-slide">
+                  <article class="project-card">
+                    <div class="project-card__media">
+                      <img src="./assets/vnh.png" alt="VNH Naidu Hall Shopify store screenshot" loading="lazy"
+                        width="400" height="260" />
+                    </div>
+                    <div class="project-card__body">
+                      <h4 class="project-card__title">VNH Naidu Hall</h4>
+                      <p class="project-card__desc">Shopify storefront for a women's innerwear and apparel brand with
+                        custom collection components.</p>
+                      <ul class="project-card__tags">
+                        <li>Shopify</li>
+                        <li>Liquid</li>
+                        <li>Sections</li>
+                      </ul>
+                      <div class="project-card__actions">
+                        <a href="https://vnhnaiduhall.com/" target="_blank" rel="noopener noreferrer"
+                          class="btn btn--sm btn--primary">Preview</a>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+
+                <div class="swiper-slide">
+                  <article class="project-card">
+                    <div class="project-card__media">
+                      <img src="./assets/freedomtree.png" alt="Freedom Tree Shopify store screenshot" loading="lazy"
+                        width="400" height="260" />
+                    </div>
+                    <div class="project-card__body">
+                      <h4 class="project-card__title">Freedom Tree</h4>
+                      <p class="project-card__desc">Shopify storefront for a maternity and baby-care brand with a rich
+                        content-led shopping journey.</p>
+                      <ul class="project-card__tags">
+                        <li>Shopify</li>
+                        <li>Liquid</li>
+                        <li>Sections</li>
+                      </ul>
+                      <div class="project-card__actions">
+                        <a href="https://freedomtree.in/" target="_blank" rel="noopener noreferrer"
+                          class="btn btn--sm btn--primary">Preview</a>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+
+                <div class="swiper-slide">
+                  <article class="project-card">
+                    <div class="project-card__media">
+                      <img src="./assets//alignerco.png" alt="AlignerCo Shopify store screenshot" loading="lazy"
+                        width="400" height="260" />
+                    </div>
+                    <div class="project-card__body">
+                      <h4 class="project-card__title">AlignerCo</h4>
+                      <p class="project-card__desc">Shopify storefront for a clear aligner DTC brand with localized city
+                        landing pages.</p>
+                      <ul class="project-card__tags">
+                        <li>Shopify</li>
+                        <li>Liquid</li>
+                        <li>Metafields</li>
+                      </ul>
+                      <div class="project-card__actions">
+                        <a href="https://alignerco.com/" target="_blank" rel="noopener noreferrer"
+                          class="btn btn--sm btn--primary">Preview</a>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+
+                <div class="swiper-slide">
+                  <article class="project-card">
+                    <div class="project-card__media">
+                      <img src="./assets/smilepath.png" alt="SmilePath Australia Shopify store screenshot"
+                        loading="lazy" width="400" height="260" />
+                    </div>
+                    <div class="project-card__body">
+                      <h4 class="project-card__title">SmilePath Australia</h4>
+                      <p class="project-card__desc">Shopify storefront for a clear aligner brand serving the Australian
+                        market.</p>
+                      <ul class="project-card__tags">
+                        <li>Shopify</li>
+                        <li>Liquid</li>
+                        <li>Sections</li>
+                      </ul>
+                      <div class="project-card__actions">
+                        <a href="https://smilepath.com.au/" target="_blank" rel="noopener noreferrer"
+                          class="btn btn--sm btn--primary">Preview</a>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+
+                <div class="swiper-slide">
+                  <article class="project-card">
+                    <div class="project-card__media">
+                      <img src="./assets/aligner32.png" alt="Aligner32 Shopify store screenshot" loading="lazy"
+                        width="400" height="260" />
+                    </div>
+                    <div class="project-card__body">
+                      <h4 class="project-card__title">Aligner32</h4>
+                      <p class="project-card__desc">Shopify storefront for a clear aligner brand with a streamlined
+                        consultation-to-checkout flow.</p>
+                      <ul class="project-card__tags">
+                        <li>Shopify</li>
+                        <li>Liquid</li>
+                        <li>Sections</li>
+                      </ul>
+                      <div class="project-card__actions">
+                        <a href="https://aligner32.com/" target="_blank" rel="noopener noreferrer"
+                          class="btn btn--sm btn--primary">Preview</a>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+
+                <div class="swiper-slide">
+                  <article class="project-card">
+                    <div class="project-card__media">
+                      <img src="./assets/vinod.png" alt="Vinod Steel Shopify store screenshot" loading="lazy"
+                        width="400" height="260" />
+                    </div>
+                    <div class="project-card__body">
+                      <h4 class="project-card__title">Vinod Steel</h4>
+                      <p class="project-card__desc">Shopify storefront for a steel and metal manufacturing company with
+                        a catalog-style product experience.</p>
+                      <ul class="project-card__tags">
+                        <li>Shopify</li>
+                        <li>Liquid</li>
+                        <li>Sections</li>
+                      </ul>
+                      <div class="project-card__actions">
+                        <a href="https://www.vinodsteel.com/" target="_blank" rel="noopener noreferrer"
+                          class="btn btn--sm btn--primary">Preview</a>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+
+                <div class="swiper-slide">
+                  <article class="project-card">
+                    <div class="project-card__media">
+                      <img src="./assets/hungry.png" alt="The Hungry Paws Shopify store screenshot" loading="lazy"
+                        width="400" height="260" />
+                    </div>
+                    <div class="project-card__body">
+                      <h4 class="project-card__title">The Hungry Paws</h4>
+                      <p class="project-card__desc">Shopify storefront for a pet food and treats brand with
+                        subscription-friendly product pages.</p>
+                      <ul class="project-card__tags">
+                        <li>Shopify</li>
+                        <li>Liquid</li>
+                        <li>Sections</li>
+                      </ul>
+                      <div class="project-card__actions">
+                        <a href="https://www.thehungrypaws.com/" target="_blank" rel="noopener noreferrer"
+                          class="btn btn--sm btn--primary">Preview</a>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+
+                <div class="swiper-slide">
+                  <article class="project-card">
+                    <div class="project-card__media">
+                      <img src="./assets/smileie.png" alt="Smileie Shopify store screenshot" loading="lazy" width="400"
+                        height="260" />
+                    </div>
+                    <div class="project-card__body">
+                      <h4 class="project-card__title">Smileie</h4>
+                      <p class="project-card__desc">Shopify storefront for a clear aligner brand with an education-first
+                        product journey.</p>
+                      <ul class="project-card__tags">
+                        <li>Shopify</li>
+                        <li>Liquid</li>
+                        <li>Sections</li>
+                      </ul>
+                      <div class="project-card__actions">
+                        <a href="https://smileie.com/" target="_blank" rel="noopener noreferrer"
+                          class="btn btn--sm btn--primary">Preview</a>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+
+                <div class="swiper-slide">
+                  <article class="project-card">
+                    <div class="project-card__media">
+                      <img src="./assets/moutharc.png" alt="MouthArc Shopify store screenshot" loading="lazy"
+                        width="400" height="260" />
+                    </div>
+                    <div class="project-card__body">
+                      <h4 class="project-card__title">MouthArc</h4>
+                      <p class="project-card__desc">Shopify storefront for a clear aligner brand, currently in a
+                        password-protected pre-launch phase.</p>
+                      <ul class="project-card__tags">
+                        <li>Shopify</li>
+                        <li>Liquid</li>
+                        <li>Sections</li>
+                      </ul>
+                      <div class="project-card__actions">
+                        <button type="button" class="btn btn--sm btn--ghost" disabled>Coming Soon</button>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+
+              </div>
+
+              <button class="project-swiper-nav project-swiper-nav--prev" aria-label="Previous Shopify project"
+                type="button">&#8249;</button>
+              <button class="project-swiper-nav project-swiper-nav--next" aria-label="Next Shopify project"
+                type="button">&#8250;</button>
+            </div>
+            <div class="swiper-pagination project-swiper-pagination"></div>
+          </div>
+        </div>
+
+        <!-- ============ WEBFLOW PROJECTS (3 → static grid) ============ -->
+        <div class="project-category">
+          <div class="project-category__header fade-up">
+            <h3 class="project-category__title">Webflow Projects</h3>
+            <p class="project-category__desc">
+              Marketing sites and CMS-driven pages built visually in Webflow with custom interactions.
+            </p>
+          </div>
+
           <div class="project-grid">
-            <!-- Project 1 -->
             <article class="project-card fade-up">
               <div class="project-card__media">
-                <img
-                  src="./assets/projects/shopify-seo-app.jpg"
-                  alt="Screenshot of Shopify SEO Updater Application"
-                  loading="lazy"
-                  width="400"
-                  height="260"
-                />
+                <img src="./assets/straight-my-teeth.png" alt="Straight My Teeth Webflow site screenshot" loading="lazy"
+                  width="400" height="260" />
               </div>
-              
               <div class="project-card__body">
-                <h3 class="project-card__title">
-                  Shopify SEO Updater App
-                </h3>
-                
-                <p class="project-card__desc">
-                  Developed and deployed an internal Shopify application to automate
-                  SEO metadata management for products and collections using Shopify
-                  Admin API, Remix, React, and Node.js.
-                </p>
-                
+                <h4 class="project-card__title">Straight My Teeth</h4>
+                <p class="project-card__desc">Webflow marketing site for a clear aligner brand with CMS-powered content
+                  sections.</p>
                 <ul class="project-card__tags">
-                  <li>Remix</li>
+                  <li>Webflow</li>
+                  <li>CMS</li>
+                  <li>Custom Interactions</li>
+                </ul>
+                <div class="project-card__actions">
+                  <a href="https://www.straightmyteeth.com/" target="_blank" rel="noopener noreferrer"
+                    class="btn btn--sm btn--primary">Preview</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card fade-up">
+              <div class="project-card__media">
+                <img src="./assets/applebee-montessori.png" alt="Applebee Montessori Webflow site screenshot"
+                  loading="lazy" width="400" height="260" />
+              </div>
+              <div class="project-card__body">
+                <h4 class="project-card__title">Applebee Montessori</h4>
+                <p class="project-card__desc">Webflow site for a Montessori preschool with an admissions-focused layout.
+                </p>
+                <ul class="project-card__tags">
+                  <li>Webflow</li>
+                  <li>CMS</li>
+                </ul>
+                <div class="project-card__actions">
+                  <a href="https://www.applebeemontessori.com/" target="_blank" rel="noopener noreferrer"
+                    class="btn btn--sm btn--primary">Preview</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card fade-up">
+              <div class="project-card__media">
+                <img src="./assets/geebee-education.png" alt="Geebee Education Webflow site screenshot" loading="lazy"
+                  width="400" height="260" />
+              </div>
+              <div class="project-card__body">
+                <h4 class="project-card__title">Geebee Education</h4>
+                <p class="project-card__desc">Webflow site for an education platform with structured course and program
+                  listings.</p>
+                <ul class="project-card__tags">
+                  <li>Webflow</li>
+                  <li>CMS</li>
+                </ul>
+                <div class="project-card__actions">
+                  <a href="https://www.geebeeworld.com/" target="_blank" rel="noopener noreferrer"
+                    class="btn btn--sm btn--primary">Preview</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- ============ REACT PROJECTS (2 → static grid) ============ -->
+        <div class="project-category">
+          <div class="project-category__header fade-up">
+            <h3 class="project-category__title">React Projects</h3>
+            <p class="project-category__desc">
+              Custom front-end applications built with React for businesses needing more than a template can offer.
+            </p>
+          </div>
+
+          <div class="project-grid">
+            <article class="project-card fade-up">
+              <div class="project-card__media">
+                <img src="./assets/pristine-pune.png" alt="Pristine Pune React site screenshot" loading="lazy"
+                  width="400" height="260" />
+              </div>
+              <div class="project-card__body">
+                <h4 class="project-card__title">Pristine Pune</h4>
+                <p class="project-card__desc">React-based site for a real estate project with an interactive property
+                  showcase.</p>
+                <ul class="project-card__tags">
                   <li>React</li>
-                  <li>Node.js</li>
-                  <li>Shopify Admin API</li>
-                  <li>Shopify CLI</li>
-                </ul>
-                
-                <div class="project-card__actions">
-                  <a href="#" class="btn btn--sm btn--primary">
-                    Case Study
-                  </a>
-                  
-                  <a href="#" class="btn btn--sm btn--ghost">
-                    Private Project
-                  </a>
-                </div>
-              </div>
-            </article>
-            
-            <!-- Project 2 -->
-            <article class="project-card fade-up">
-              <div class="project-card__media">
-                <img
-                  src="./assets/projects/multi-country-store.jpg"
-                  alt="Screenshot of Multi Country Shopify Storefront"
-                  loading="lazy"
-                  width="400"
-                  height="260"
-                  />
-              </div>
-              
-              <div class="project-card__body">
-                <h3 class="project-card__title">
-                  Multi-Country Shopify Storefront
-                </h3>
-                
-                <p class="project-card__desc">
-                  Built a Shopify storefront from scratch using Horizon theme
-                  sections, Shopify Markets, Metafields, and Metaobjects with support
-                  for multiple countries and localized content management.
-                </p>
-                
-                <ul class="project-card__tags">
-                  <li>Shopify</li>
-                  <li>Liquid</li>
-                  <li>Shopify Markets</li>
-                  <li>Metafields</li>
-                  <li>Metaobjects</li>
-                </ul>
-                
-                <div class="project-card__actions">
-                  <a href="#" class="btn btn--sm btn--primary">
-                    Case Study
-                  </a>
-                  
-                  <a href="#" class="btn btn--sm btn--ghost">
-                    Private Project
-                  </a>
-                </div>
-              </div>
-            </article>
-            
-            <!-- Project 3 -->
-            <article class="project-card fade-up">
-              <div class="project-card__media">
-                <img
-                  src="./assets/projects/author-reviewer-system.jpg"
-                  alt="Screenshot of Author and Reviewer Management System"
-                  loading="lazy"
-                  width="400"
-                  height="260"
-                  />
-              </div>
-              
-              <div class="project-card__body">
-                <h3 class="project-card__title">
-                  Author & Reviewer Management System
-                </h3>
-                
-                <p class="project-card__desc">
-                  Built a dynamic blog management platform using Shopify Metaobjects
-                  and bidirectional mapping between blogs and authors to manage
-                  structured author and reviewer information efficiently.
-                </p>
-                
-                <ul class="project-card__tags">
-                  <li>Shopify</li>
-                  <li>Liquid</li>
-                  <li>Metaobjects</li>
                   <li>JavaScript</li>
                 </ul>
-                
                 <div class="project-card__actions">
-                  <a href="#" class="btn btn--sm btn--primary">
-                    Case Study
-                  </a>
-                  
-                  <a href="#" class="btn btn--sm btn--ghost">
-                    Private Project
-                  </a>
+                  <a href="https://pristinepune.com/" target="_blank" rel="noopener noreferrer"
+                    class="btn btn--sm btn--primary">Preview</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card fade-up">
+              <div class="project-card__media">
+                <img src="./assets/joyful.png" alt="Joyful React site screenshot" loading="lazy" width="400"
+                  height="260" />
+              </div>
+              <div class="project-card__body">
+                <h4 class="project-card__title">Joyful</h4>
+                <p class="project-card__desc">React storefront for a kids' products brand, connected to a custom admin
+                  CRM for catalog management.</p>
+                <ul class="project-card__tags">
+                  <li>React</li>
+                  <li>Node.js</li>
+                </ul>
+                <div class="project-card__actions">
+                  <button type="button" class="btn btn--sm btn--ghost" disabled>Coming Soon</button>
                 </div>
               </div>
             </article>
           </div>
         </div>
-      </section>
 
-      <!-- ================= WORK EXPERIENCE SECTION ================= -->
-      <section
-        class="experience section"
-        id="experience"
-        aria-labelledby="experience-heading"
-      >
-        <div class="container">
-          <div class="section-header fade-up">
-            <p class="section-eyebrow">Work Experience</p>
+        <!-- ============ SHOPIFY APPS (1 → static grid) ============ -->
+        <div class="project-category">
+          <div class="project-category__header fade-up">
+            <h3 class="project-category__title">Shopify Apps</h3>
+            <p class="project-category__desc">
+              Custom Shopify apps built to solve specific operational problems for internal and client stores.
+            </p>
           </div>
-          
-          <h2 id="experience-heading" class="visually-hidden">
-            Work Experience
-          </h2>
-          
-          <ol class="timeline">
-            <!-- Experience 1 -->
-            <li class="timeline__item fade-left">
-              <div class="timeline__dot" aria-hidden="true"></div>
-              <div class="timeline__content">
-                <div class="timeline__top">
-                  <h3 class="timeline__role">
-                    Full Stack Shopify Developer Intern
-                  </h3>
-                  
-                  <span class="timeline__date">
-                    April 2025 – July 2025
-                  </span>
-                </div>
-                
-                <p class="timeline__company">
-                  Realatte Ventures Limited • Mumbai, Maharashtra
-                </p>
-                
-                <ul class="timeline__list">
-                  <li>
-                    Developed and deployed an internal Shopify SEO Updater application
-                    using Shopify CLI, Remix, React, Node.js, and Shopify Admin API.
-                  </li>
-                  
-                  <li>
-                    Converted manually managed Shopify collection pages into Smart
-                    Collections with automated product conditions.
-                  </li>
-                  
-                  <li>
-                    Implemented dynamic breadcrumbs by restructuring Shopify
-                    navigation and URL mapping for improved user experience.
-                  </li>
-                  
-                  <li>
-                    Collaborated with cross-functional teams to deliver custom
-                    Shopify solutions and improve store automation workflows.
-                  </li>
-                </ul>
+
+          <div class="project-grid">
+            <article class="project-card fade-up">
+              <div class="project-card__media">
+                <img src="./assets/seo-bulk-updater.png" alt="SEO Bulk Updater app screenshot" loading="lazy"
+                  width="400" height="260" />
               </div>
-            </li>
-            
-            <!-- Experience 2 -->
-            <li class="timeline__item fade-left">
-              <div class="timeline__dot" aria-hidden="true"></div>
-              
-              <div class="timeline__content">
-                <div class="timeline__top">
-                  <h3 class="timeline__role">
-                    Frontend Developer Intern
-                  </h3>
-                  
-                  <span class="timeline__date">
-                    January 2025 – April 2025
-                  </span>
-                </div>
-                
-                <p class="timeline__company">
-                  Mark Web Solutions • Mumbai, Maharashtra
-                </p>
-                
-                <ul class="timeline__list">
-                  <li>
-                    Built schema-optimized Shopify pages and custom cart functionality
-                    using Liquid, HTML, CSS, and JavaScript.
-                  </li>
-                  
-                  <li>
-                    Developed product mapping, dynamic discounts, and automatic
-                    freebie inclusion features.
-                  </li>
-                  
-                  <li>
-                    Delivered 100+ UI enhancements and bug fixes across multiple
-                    Shopify storefronts and international markets.
-                  </li>
-                  
-                  <li>
-                    Built a Shopify storefront from scratch using Horizon theme
-                    sections, Metafields, and Metaobjects.
-                  </li>
-                  
-                  <li>
-                    Developed custom product pages, integrated Razorpay payment
-                    gateway solutions, and implemented paginated collections.
-                  </li>
-                  
-                  <li>
-                    Built dynamic blog listing pages and created Author and Reviewer
-                    systems using Shopify Metaobjects.
-                  </li>
+              <div class="project-card__body">
+                <h4 class="project-card__title">SEO Bulk Updater</h4>
+                <p class="project-card__desc">Internal Shopify app for bulk SEO management, developed for internal
+                  company usage.</p>
+                <ul class="project-card__tags">
+                  <li>Shopify Admin API</li>
                 </ul>
+                <div class="project-card__actions">
+                  <button type="button" class="btn btn--sm btn--ghost" disabled>Internal Tool</button>
+                </div>
               </div>
-            </li>
-          </ol>
-        </div>
-      </section>
-
-      <!-- ================= EDUCATION SECTION ================= -->
-      <section
-        class="education section"
-        id="education"
-        aria-labelledby="education-heading"
-      >
-        <div class="container">
-          <p class="section-eyebrow fade-up">Education</p>
-          <h2 id="education-heading" class="visually-hidden">Education</h2>
-
-         <div class="edu-grid">
-           <div class="edu-card fade-up">
-             <span class="edu-card__icon" aria-hidden="true">
-               <svg
-                 width="28"
-                 height="28"
-                 viewBox="0 0 24 24"
-                 fill="none"
-                 xmlns="http://www.w3.org/2000/svg"
-                 aria-hidden="true"
-                 >
-                 
-                 <path
-                   d="M12 3L2 8L12 13L22 8L12 3Z"
-                   stroke="currentColor"
-                   stroke-width="2"
-                   stroke-linejoin="round"
-                   />
-                 <path
-                   d="M6 10V15C6 17.2 8.7 19 12 19C15.3 19 18 17.2 18 15V10"
-                   stroke="currentColor"
-                   stroke-width="2"
-                   stroke-linecap="round"
-                   stroke-linejoin="round"
-                   />
-               </svg>
-             </span>
-             <div>
-               <h3 class="edu-card__title">
-                 Bachelor of Science in Information Technology (B.Sc. IT)
-               </h3>
-               <p class="edu-card__school">
-                 SIES College of Arts, Science and Commerce, Sion (West)
-               </p>
-               <p class="edu-card__meta">Affiliated to University of Mumbai</p>
-               <p class="edu-card__meta">2022 – 2025</p>
-               <p class="edu-card__meta">CGPA: 8.82 / 10</p>
-             </div>
-           </div>
-           
-           <div class="edu-card fade-up">
-             <span class="edu-card__icon" aria-hidden="true">
-               <svg
-                 width="28"
-                 height="28"
-                 viewBox="0 0 24 24"
-                 fill="none"
-                 xmlns="http://www.w3.org/2000/svg"
-                 aria-hidden="true"
-                 >
-                 <path
-                   d="M12 3L2 8L12 13L22 8L12 3Z"
-                   stroke="currentColor"
-                   stroke-width="2"
-                   stroke-linejoin="round"
-                   />
-                 <path
-                   d="M6 10V15C6 17.2 8.7 19 12 19C15.3 19 18 17.2 18 15V10"
-                   stroke="currentColor"
-                   stroke-width="2"
-                   stroke-linecap="round"
-                   stroke-linejoin="round"
-                   />
-               </svg>
-             </span>
-             
-             <div>
-               <h3 class="edu-card__title">
-                 Higher Secondary Certificate (HSC)
-               </h3>
-               <p class="edu-card__school">
-                 S.K. Somaiya Vinay Mandir, Vidyavihar
-               </p>
-               <p class="edu-card__meta">Maharashtra State Board (HSC)</p>
-               <p class="edu-card__meta">2021</p>
-               <p class="edu-card__meta">Percentage: 92.17%</p>
-             </div>
-           </div>
-         </div>
-        </div>
-      </section>
-
-      <!-- ================= CERTIFICATIONS SECTION ================= -->
-      <section
-        class="certifications section"
-        id="certifications"
-        aria-labelledby="certifications-heading"
-      >
-        <div class="container">
-          <p class="section-eyebrow fade-up">Certifications</p>
-          
-          <h2 id="certifications-heading" class="visually-hidden">
-            Certifications
-          </h2>
-          
-          <div class="cert-grid">
-            <!-- Certificate 1 -->
-            <div class="cert-card fade-up">
-              <span class="cert-card__icon" aria-hidden="true">
-                <img src="./assets/javascript-programming-language-icon.svg"
-                  alt="JavaScript" />
-              </span>
-              
-              <h3 class="cert-card__title">
-                JavaScript (Intermediate)
-              </h3>
-              
-              <p class="cert-card__issuer">
-                HackerRank
-              </p>
-              
-              <p class="cert-card__year">
-                2024
-              </p>
-            </div>
-            
-            <!-- Certificate 2 -->
-            <div class="cert-card fade-up">
-              <span class="cert-card__icon" aria-hidden="true">
-                <img src="./assets/react-js-icon.svg"
-                  alt="React" />
-              </span>
-              
-              <h3 class="cert-card__title">
-                React Developer
-              </h3>
-              
-              <p class="cert-card__issuer">
-                Infosys Springboard
-              </p>
-              
-              <p class="cert-card__year">
-                2024
-              </p>
-            </div>
-            
-            <!-- Certificate 3 -->
-            <div class="cert-card fade-up">
-              <span class="cert-card__icon" aria-hidden="true">
-                <img src="./assets/java-programming-language-icon.svg"
-                  alt="Java" />
-              </span>
-              
-              <h3 class="cert-card__title">
-                Java Programming
-              </h3>
-              
-              <p class="cert-card__issuer">
-                Great Learning
-              </p>
-              
-              <p class="cert-card__year">
-                2024
-              </p>
-            </div>
-            
-            <!-- Certificate 4 -->
-            <div class="cert-card fade-up">
-              <span class="cert-card__icon" aria-hidden="true">
-                <img src="./assets/postgresql.svg"
-                  alt="SQL" />
-              </span>
-              
-              <h3 class="cert-card__title">
-                SQL (Basic)
-              </h3>
-              
-              <p class="cert-card__issuer">
-                HackerRank
-              </p>
-              
-              <p class="cert-card__year">
-                2024
-              </p>
-            </div>
+            </article>
           </div>
         </div>
-      </section>
 
-     <!-- ================= CONTACT SECTION ================= -->
-      <section
-        class="contact section"
-        id="contact"
-        aria-labelledby="contact-heading"
-      >
-        <div class="container">
-          <p class="section-eyebrow fade-up">Let's Connect</p>
-          
-          <h2 id="contact-heading" class="contact__heading">
-            Have a project in mind? Let's build something amazing together.
-          </h2>
-          
-          <div class="contact__grid">
-            <div class="contact__info fade-left">
-              <ul class="contact__list">
-                <li class="contact__item">
-                  <span class="contact__icon" aria-hidden="true">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <rect
-                        x="3"
-                        y="5"
-                        width="18"
-                        height="14"
-                        rx="2"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        />
-                      <path
-                        d="M3 7L12 13L21 7"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        />
-                    </svg>
-                  </span>
-                  
-                  <div>
-                    <p class="contact__label">Email</p>
-                    <a href="mailto:sonali@example.com">sonali@example.com</a>
-                  </div>
+        <!-- ============ INTERNAL COMPANY TOOLS (3 → static grid) ============ -->
+        <div class="project-category">
+          <div class="project-category__header fade-up">
+            <h3 class="project-category__title">Internal Company Tools</h3>
+            <p class="project-category__desc">
+              In-house tools built to speed up recurring team workflows.
+            </p>
+          </div>
+
+          <div class="project-grid">
+            <article class="project-card fade-up">
+              <div class="project-card__media">
+                <img src="./assets/blog-composer.png" alt="Blog Composer tool screenshot" loading="lazy" width="400"
+                  height="260" />
+              </div>
+              <div class="project-card__body">
+                <h4 class="project-card__title">Blog Composer</h4>
+                <p class="project-card__desc">Internal tool that turns pasted blog content into fully formatted HTML
+                  with all required CSS classes, cutting blog creation time from hours to seconds.</p>
+                <ul class="project-card__tags">
+                  <li>React</li>
+                  <li>Node.js</li>
+                  <li>Tailwind CSS</li>
+                  <li>TypeScript</li>
+                  <li>Shopify Admin API</li>
+                </ul>
+                <div class="project-card__actions">
+                  <button type="button" class="btn btn--sm btn--ghost" disabled>Internal Tool</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card fade-up">
+              <div class="project-card__media">
+                <img src="./assets/aligner-city-composer.png" alt="AlignerCo City Pages Composer tool screenshot"
+                  loading="lazy" width="400" height="260" />
+              </div>
+              <div class="project-card__body">
+                <h4 class="project-card__title">AlignerCo City Pages Composer</h4>
+                <p class="project-card__desc">Generates ready-to-use HTML for city landing pages from pasted text, using
+                  predefined classes for instant structure.</p>
+                <ul class="project-card__tags">
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>JavaScript</li>
+                </ul>
+                <div class="project-card__actions">
+                  <a href="https://alignerco-city-page-composer.netlify.app/" target="_blank" rel="noopener noreferrer"
+                    class="btn btn--sm btn--primary">Preview</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card fade-up">
+              <div class="project-card__media">
+                <img src="./assets/joyful-admin-crm.png" alt="Joyful Admin CRM tool screenshot" loading="lazy"
+                  width="400" height="260" />
+              </div>
+              <div class="project-card__body">
+                <h4 class="project-card__title">Joyful Admin CRM</h4>
+                <p class="project-card__desc">Admin CRM for managing products, bulk uploads, categories, and
+                  sub-categories, with changes reflecting instantly on the Joyful storefront.</p>
+                <ul class="project-card__tags">
+                  <li>Java Spring Boot</li>
+                  <li>PostgreSQL</li>
+                  <li>Hibernate</li>
+                </ul>
+                <div class="project-card__actions">
+                  <button type="button" class="btn btn--sm btn--ghost" disabled>Internal Tool</button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= WORK EXPERIENCE SECTION ================= -->
+    <section class="experience section" id="experience" aria-labelledby="experience-heading">
+      <div class="container">
+        <div class="section-header fade-up">
+          <p class="section-eyebrow">Work Experience</p>
+        </div>
+
+        <h2 id="experience-heading" class="visually-hidden">
+          Work Experience
+        </h2>
+
+        <ol class="timeline">
+          <!-- Experience 1 -->
+          <li class="timeline__item fade-left">
+            <div class="timeline__dot" aria-hidden="true"></div>
+            <div class="timeline__content">
+              <div class="timeline__top">
+                <h3 class="timeline__role">
+                  Full Stack Developer
+                </h3>
+
+                <span class="timeline__date">
+                  April 2026 – July 2026
+                </span>
+              </div>
+
+              <p class="timeline__company">
+                Realatte Ventures Limited • Andheri, Maharashtra
+              </p>
+
+              <ul class="timeline__list">
+                <li>
+                  Developed and deployed an internal Shopify SEO Updater application
+                  using Shopify CLI, Remix, React, Node.js, and Shopify Admin API.
                 </li>
-                
-                <li class="contact__item">
-                  <span class="contact__icon" aria-hidden="true">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M22 16.92V19.92C22 20.47 21.55 20.92 21 20.92C10.51 20.92 2 12.41 2 1.92C2 1.37 2.45 0.92 3 0.92H7V5.92L5 7.92C6.33 11.02 8.73 13.42 11.83 14.75L13.83 12.75H17.83C18.38 12.75 18.83 13.2 18.83 13.75V16.92H22Z"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </span>
-                  
-                  <div>
-                    <p class="contact__label">Phone</p>
-                    <a href="tel:+919876543210">+91 98765 43210</a>
-                  </div>
+
+                <li>
+                  Converted manually managed Shopify collection pages into Smart
+                  Collections with automated product conditions.
                 </li>
-                
-                <li class="contact__item">
-                  <span class="contact__icon" aria-hidden="true">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    > 
-                      <path
-                        d="M12 22S19 16 19 10A7 7 0 1 0 5 10C5 16 12 22 12 22Z"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <circle
-                        cx="12"
-                        cy="10"
-                        r="2.5"
-                        stroke="currentColor"
-                        stroke-width="2"
-                      />
-                    </svg>
-                  </span>
-                  
-                  <div>
-                    <p class="contact__label">Location</p>
-                    <p>Mumbai, Maharashtra, India</p>
-                  </div>
+
+                <li>
+                  Implemented dynamic breadcrumbs by restructuring Shopify
+                  navigation and URL mapping for improved user experience.
+                </li>
+
+                <li>
+                  Collaborated with cross-functional teams to deliver custom
+                  Shopify solutions and improve store automation workflows.
                 </li>
               </ul>
             </div>
-            
-            <form class="contact__form fade-right" id="contactForm" novalidate>
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="name" class="visually-hidden">Your Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Your Name"
-                    required
-                    aria-required="true"
-                  />
-                  <span class="form-error" id="nameError" role="alert"></span>
-                </div>
-                
-                <div class="form-group">
-                  <label for="email" class="visually-hidden">Your Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Your Email"
-                    required
-                    aria-required="true"
-                  />
-                  <span class="form-error" id="emailError" role="alert"></span>
-                </div>
+          </li>
+
+          <!-- Experience 2 -->
+          <li class="timeline__item fade-left">
+            <div class="timeline__dot" aria-hidden="true"></div>
+
+            <div class="timeline__content">
+              <div class="timeline__top">
+                <h3 class="timeline__role">
+                  Frontend Developer
+                </h3>
+
+                <span class="timeline__date">
+                  January 2025 – April 2026
+                </span>
               </div>
-              
-              <div class="form-group">
-                <label for="message" class="visually-hidden">
-                  Your Message
-                </label>
-                
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  placeholder="Your Message"
-                  required
-                  aria-required="true"
-                  ></textarea>
-                
-                <span class="form-error" id="messageError" role="alert"></span>
-              </div>
-              
-              <button type="submit" class="btn btn--primary btn--block">
-                Send Message
-              </button>
-              
-              <p
-                class="form-status"
-                id="formStatus"
-                role="status"
-                aria-live="polite"
-              ></p>
-            </form>
+
+              <p class="timeline__company">
+                Mark Web Solutions • Mumbai, Maharashtra
+              </p>
+
+              <ul class="timeline__list">
+                <li>
+                  Built schema-optimized Shopify pages and custom cart functionality
+                  using Liquid, HTML, CSS, and JavaScript.
+                </li>
+
+                <li>
+                  Developed product mapping, dynamic discounts, and automatic
+                  freebie inclusion features.
+                </li>
+
+                <li>
+                  Delivered 100+ UI enhancements and bug fixes across multiple
+                  Shopify storefronts and international markets.
+                </li>
+
+                <li>
+                  Built a Shopify storefront from scratch using Horizon theme
+                  sections, Metafields, and Metaobjects.
+                </li>
+
+                <li>
+                  Developed custom product pages, integrated Razorpay payment
+                  gateway solutions, and implemented paginated collections.
+                </li>
+
+                <li>
+                  Built dynamic blog listing pages and created Author and Reviewer
+                  systems using Shopify Metaobjects.
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= EDUCATION SECTION ================= -->
+    <section class="education section" id="education" aria-labelledby="education-heading">
+      <div class="container">
+        <p class="section-eyebrow fade-up">Education</p>
+        <h2 id="education-heading" class="visually-hidden">Education</h2>
+
+        <div class="edu-grid">
+          <div class="edu-card fade-up">
+            <span class="edu-card__icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true">
+
+                <path d="M12 3L2 8L12 13L22 8L12 3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                <path d="M6 10V15C6 17.2 8.7 19 12 19C15.3 19 18 17.2 18 15V10" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <div>
+              <h3 class="edu-card__title">
+                Bachelor of Science in Information Technology (B.Sc. IT)
+              </h3>
+              <p class="edu-card__school">
+                SIES College of Arts, Science and Commerce, Sion (West)
+              </p>
+              <p class="edu-card__meta">Affiliated to University of Mumbai</p>
+              <p class="edu-card__meta">2022 – 2025</p>
+              <p class="edu-card__meta">CGPA: 8.82 / 10</p>
+            </div>
+          </div>
+
+          <div class="edu-card fade-up">
+            <span class="edu-card__icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true">
+                <path d="M12 3L2 8L12 13L22 8L12 3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                <path d="M6 10V15C6 17.2 8.7 19 12 19C15.3 19 18 17.2 18 15V10" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+
+            <div>
+              <h3 class="edu-card__title">
+                Higher Secondary Certificate (HSC)
+              </h3>
+              <p class="edu-card__school">
+                S.K. Somaiya Vinay Mandir, Vidyavihar
+              </p>
+              <p class="edu-card__meta">Maharashtra State Board (HSC)</p>
+              <p class="edu-card__meta">2021</p>
+              <p class="edu-card__meta">Percentage: 92.17%</p>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+
+    <!-- ================= CERTIFICATIONS SECTION ================= -->
+    <section class="certifications section" id="certifications" aria-labelledby="certifications-heading">
+      <div class="container">
+        <p class="section-eyebrow fade-up">Certification</p>
+        <h2 id="certifications-heading" class="visually-hidden">Certification</h2>
+
+        <div class="cert-journey fade-up">
+          <div class="cert-journey__icon" aria-hidden="true">
+            <img src="./assets/jspiders.jpg" alt="" />
+          </div>
+
+          <h3 class="cert-journey__title">Java Full Stack Development</h3>
+          <p class="cert-journey__issuer"><em>Certificate ID: JSP-26-3445</em></p>
+          <p class="cert-journey__issuer">JSpiders Training Institute, Thane (W)</p>
+
+          <p class="cert-journey__desc">
+            Successfully completed a comprehensive Java Full Stack Development course
+            covering frontend development, backend development, database management,
+            enterprise Java technologies, and modern frameworks through hands-on
+            projects and practical training.
+          </p>
+
+          <p class="cert-journey__label">Subjects Covered</p>
+
+          <div class="subject-grid">
+            <div class="subject-card fade-up">
+              <span class="subject-card__step" aria-hidden="true">01</span>
+              <h4 class="subject-card__title">Web Technologies</h4>
+              <p class="subject-card__desc">HTML, CSS, JavaScript, React.js, Responsive Design.</p>
+            </div>
+
+            <div class="subject-card fade-up">
+              <span class="subject-card__step" aria-hidden="true">02</span>
+              <h4 class="subject-card__title">Core Java</h4>
+              <p class="subject-card__desc">OOPs, Collections, Exception Handling, Multithreading.</p>
+            </div>
+
+            <div class="subject-card fade-up">
+              <span class="subject-card__step" aria-hidden="true">03</span>
+              <h4 class="subject-card__title">SQL</h4>
+              <p class="subject-card__desc">RDBMS,Database Design, Queries, Joins, Functions.</p>
+            </div>
+
+            <div class="subject-card fade-up">
+              <span class="subject-card__step" aria-hidden="true">04</span>
+              <h4 class="subject-card__title">J2EE</h4>
+              <p class="subject-card__desc">Servlets, JSP, JDBC.</p>
+            </div>
+
+            <div class="subject-card fade-up">
+              <span class="subject-card__step" aria-hidden="true">05</span>
+              <h4 class="subject-card__title">Frameworks</h4>
+              <p class="subject-card__desc">Hibernate, Spring Core, Spring Data JPA, Spring Boot .</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT SECTION ================= -->
+    <section class="contact section" id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <p class="section-eyebrow fade-up">Let's Connect</p>
+
+        <h2 id="contact-heading" class="contact__heading">
+          Have a project in mind? Let's build something amazing together.
+        </h2>
+
+        <div class="contact__grid">
+          <div class="contact__info fade-left">
+            <ul class="contact__list">
+              <li class="contact__item">
+                <span class="contact__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2" />
+                    <path d="M3 7L12 13L21 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </span>
+
+                <div>
+                  <p class="contact__label">Email</p>
+                  <a href="mailto:sonaliram654@gmail.com">sonaliram654@gmail.com</a>
+                </div>
+              </li>
+
+              <li class="contact__item">
+                <span class="contact__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M22 16.92V19.92C22 20.47 21.55 20.92 21 20.92C10.51 20.92 2 12.41 2 1.92C2 1.37 2.45 0.92 3 0.92H7V5.92L5 7.92C6.33 11.02 8.73 13.42 11.83 14.75L13.83 12.75H17.83C18.38 12.75 18.83 13.2 18.83 13.75V16.92H22Z"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </span>
+
+                <div>
+                  <p class="contact__label">Phone</p>
+                  <a href="tel:+919324597448">+91 93245 97448</a>
+                </div>
+              </li>
+
+              <li class="contact__item">
+                <span class="contact__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 22S19 16 19 10A7 7 0 1 0 5 10C5 16 12 22 12 22Z" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round" />
+                    <circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="2" />
+                  </svg>
+                </span>
+
+                <div>
+                  <p class="contact__label">Location</p>
+                  <p>Thane, Maharashtra, India</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <form class="contact__form fade-right" id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name" class="visually-hidden">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" required aria-required="true" />
+                <span class="form-error" id="nameError" role="alert"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="visually-hidden">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="Your Email" required aria-required="true" />
+                <span class="form-error" id="emailError" role="alert"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="message" class="visually-hidden">
+                Your Message
+              </label>
+
+              <textarea id="message" name="message" rows="5" placeholder="Your Message" required
+                aria-required="true"></textarea>
+
+              <span class="form-error" id="messageError" role="alert"></span>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--block">
+              Send Message
+            </button>
+
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
 
     <!-- ================= FOOTER ================= -->
     <footer class="footer">
       <div class="container footer__inner">
         <p class="footer__copy">
-          &copy; 2025 Sonali Ram. All rights reserved.
+          &copy; 2026 Sonali Ram. All rights reserved.
         </p>
 
         <ul class="footer__social" aria-label="Social media links">
           <li>
-            <a
-              href="https://github.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub profile"
-              >
+            <a href="https://github.com/SonaliRam" target="_blank" rel="noopener noreferrer"
+              aria-label="GitHub profile">
               <i class="fab fa-github"></i>
             </a>
           </li>
-          
+
           <li>
-            <a
-              href="https://linkedin.com/in/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn profile"
-              >
+            <a href="https://linkedin.com/in/sonali-ram-b64a622b4/" target="_blank" rel="noopener noreferrer"
+              aria-label="LinkedIn profile">
               <i class="fab fa-linkedin-in"></i>
             </a>
           </li>
-          
+
           <li>
-            <a
-              href="https://x.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="X profile"
-              >
-              <i class="fab fa-x-twitter"></i>
+            <a href="https://www.instagram.com/sonaliiiii._____" target="_blank" rel="noopener noreferrer"
+              aria-label="Instagram profile">
+              <i class="fab fa-instagram"></i>
             </a>
           </li>
-          
+
           <li>
-            <a
-              href="https://instagram.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram profile"
-              >
-              <i class="fab fa-instagram"></i>
+            <a href="https://wa.me/9324597448" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp profile">
+              <i class="fab fa-whatsapp"></i>
             </a>
           </li>
         </ul>
 
-        <button
-          class="back-to-top"
-          id="backToTop"
-          type="button"
-          aria-label="Back to top"
-        >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M12 19V5M5 12l7-7 7 7"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
+        <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
           </svg>
         </button>
       </div>
     </footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
     <script src="js/script.js" defer></script>
-  </body>
+</body>
+
 </html>

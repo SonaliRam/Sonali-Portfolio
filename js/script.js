@@ -23,6 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initNavbarScrollState();
   initSmoothScroll();
   initScrollProgress();
+  initProjectSwipers();
+  initMobileOnlyProjectSwipers();
   initTypingEffect();
   initCounters();
   initScrollReveal();
@@ -38,7 +40,7 @@ function initThemeToggle() {
   const toggleBtn = document.getElementById("themeToggle");
   const root = document.documentElement;
 
-   if (!toggleBtn) return;
+  if (!toggleBtn) return;
 
   // Determine initial theme: saved preference > system preference > dark default
   const savedTheme = localStorage.getItem(STORAGE_KEY);
@@ -93,13 +95,13 @@ function initMobileNav() {
     });
   });
 
-   document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    menu.classList.remove("is-open");
-    toggle.setAttribute("aria-expanded", "false");
-    document.body.classList.remove("nav-locked");
-  }
-});
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      menu.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("nav-locked");
+    }
+  });
 }
 
 /* ==========================================================================
@@ -158,13 +160,13 @@ function initSmoothScroll() {
       const navHeight = navbar ? navbar.offsetHeight : 0;
       const targetPosition =
         target.getBoundingClientRect().top + window.scrollY - navHeight - 12;
-       
-       window.scrollTo({ top: targetPosition, behavior: "smooth" });
-       
-       setTimeout(() => {
-          target.setAttribute("tabindex", "-1");
-          target.focus({ preventScroll: true });
-       }, 400);
+
+      window.scrollTo({ top: targetPosition, behavior: "smooth" });
+
+      setTimeout(() => {
+        target.setAttribute("tabindex", "-1");
+        target.focus({ preventScroll: true });
+      }, 400);
     });
   });
 }
@@ -195,15 +197,15 @@ function initScrollProgress() {
 function initTypingEffect() {
   const el = document.getElementById("typingText");
   if (!el) return;
-   
-   const phrases = [
-      "Shopify Stores.",
-      "Custom Shopify Apps.",
-      "eCommerce Solutions.",
-      "React Applications.",
-      "Modern Web Applications.",
-   ];
-   
+
+  const phrases = [
+    "Shopify Stores.",
+    "Custom Shopify Apps.",
+    "eCommerce Solutions.",
+    "React Applications.",
+    "Modern Web Applications.",
+  ];
+
   const typeSpeed = 65;
   const eraseSpeed = 38;
   const holdTime = 1600;
@@ -273,11 +275,11 @@ function initCounters() {
       const progress = Math.min((now - startTime) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
       const value =
-         target % 1 !== 0
-         ? (eased * target).toFixed(1)
-         : Math.round(eased * target);
-       
-       el.textContent = `${value}${suffix}`;
+        target % 1 !== 0
+          ? (eased * target).toFixed(1)
+          : Math.round(eased * target);
+
+      el.textContent = `${value}${suffix}`;
 
       if (progress < 1) requestAnimationFrame(step);
     };
@@ -426,29 +428,45 @@ function initContactForm() {
       return;
     }
 
-    // No backend wired up yet — simulate a successful send.
-    // Replace this block with a real fetch() call to your form endpoint.
+    // Sends form data to a Google Apps Script Web App, which appends
+    // each submission as a row in a Google Sheet.
+    const GOOGLE_SHEET_ENDPOINT =
+      "https://script.google.com/macros/s/AKfycbx_bbtYGwbJ6hEtaFBSYTrrkqbsH-0_yaMrI6xdCz_hBbOi7burS2BWi6Hc6S4GJCPb/exec"; // ends in /exec
+
     const submitBtn = form.querySelector('button[type="submit"]');
     submitBtn.disabled = true;
     submitBtn.classList.add("btn--loading");
     submitBtn.textContent = "Sending...";
 
-    window.setTimeout(() => {
-      status.textContent = "Message sent! I\u2019ll get back to you soon.";
-      status.style.color = "var(--success)";
-      submitBtn.disabled = false;
-      submitBtn.classList.remove("btn--loading");
-      submitBtn.textContent = "Send Message";
-      form.reset();
-       
-      Object.values(errors).forEach((error) => {
-         error.textContent = "";
+    fetch(GOOGLE_SHEET_ENDPOINT, {
+      method: "POST",
+      mode: "no-cors", // Apps Script doesn't send CORS headers back; the
+      // request still completes and the row still saves,
+      // we just can't read the response body here.
+      body: new FormData(form),
+    })
+      .then(() => {
+        status.textContent = "Message sent! I\u2019ll get back to you soon.";
+        status.style.color = "var(--success)";
+        form.reset();
+
+        Object.values(errors).forEach((error) => {
+          error.textContent = "";
+        });
+
+        form
+          .querySelectorAll(".form-group")
+          .forEach((group) => group.classList.remove("has-error"));
+      })
+      .catch(() => {
+        status.textContent = "Something went wrong. Please try again.";
+        status.style.color = "var(--danger)";
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove("btn--loading");
+        submitBtn.textContent = "Send Message";
       });
-       
-      form
-         .querySelectorAll(".form-group")
-         .forEach((group) => group.classList.remove("has-error"));
-    }, 900);
   });
 }
 
@@ -471,9 +489,158 @@ function initBackToTop() {
       navbar.setAttribute("tabindex", "-1");
 
       setTimeout(() => {
-         navbar.focus();
-         navbar.removeAttribute("tabindex");
+        navbar.focus();
+        navbar.removeAttribute("tabindex");
       }, 400);
     }
   });
+}
+/* ==========================================================================
+   12. PROJECT SWIPERS (technology-wise Featured Projects sliders)
+   Auto-initializes every .project-swiper found on the page. To add a new
+   sliding category later, wrap its cards in the same
+   .swiper.project-swiper > .swiper-wrapper > .swiper-slide markup — this
+   function will pick it up automatically, no JS changes required.
+   ========================================================================== */
+function initProjectSwipers() {
+  if (typeof Swiper === "undefined") return;
+
+  document.querySelectorAll(".project-swiper").forEach((el) => {
+    const wrap = el.closest(".project-swiper-wrap");
+    if (!wrap) return;
+
+    new Swiper(el, {
+      loop: true,
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
+      spaceBetween: 22,
+      slidesPerView: 1,
+      breakpoints: {
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+      },
+      navigation: {
+        nextEl: wrap.querySelector(".project-swiper-nav--next"),
+        prevEl: wrap.querySelector(".project-swiper-nav--prev"),
+      },
+      pagination: {
+        el: wrap.querySelector(".project-swiper-pagination"),
+        clickable: true,
+      },
+      a11y: { enabled: true },
+      keyboard: { enabled: true },
+    });
+  });
+}
+
+/* ==========================================================================
+   13. MOBILE-ONLY PROJECT SWIPERS
+   Below 768px, every .project-grid (categories with 3 or fewer projects)
+   is temporarily converted into a Swiper — same .project-card nodes are
+   moved into slides, no HTML authoring changes required. At 768px and up,
+   it's converted back into the original static grid automatically.
+   ========================================================================== */
+function initMobileOnlyProjectSwipers() {
+  if (typeof Swiper === "undefined") return;
+
+  const mql = window.matchMedia("(max-width: 767.98px)");
+  const registry = new Map(); // grid element -> { swiperInstance, wrap, cards, parent, nextSibling }
+  const grids = document.querySelectorAll(".project-grid");
+
+  function buildSwiperShell(grid) {
+    const cards = Array.from(grid.children);
+
+    const wrap = document.createElement("div");
+    wrap.className = "project-swiper-wrap fade-up is-visible";
+
+    const swiperEl = document.createElement("div");
+    swiperEl.className = "swiper project-swiper";
+
+    const wrapperEl = document.createElement("div");
+    wrapperEl.className = "swiper-wrapper";
+
+    cards.forEach((card) => {
+      const slide = document.createElement("div");
+      slide.className = "swiper-slide";
+      slide.appendChild(card); // moves the existing card, doesn't clone it
+      wrapperEl.appendChild(slide);
+    });
+
+    swiperEl.appendChild(wrapperEl);
+
+    const prevBtn = document.createElement("button");
+    prevBtn.type = "button";
+    prevBtn.className = "project-swiper-nav project-swiper-nav--prev";
+    prevBtn.setAttribute("aria-label", "Previous project");
+    prevBtn.innerHTML = "&#8249;";
+
+    const nextBtn = document.createElement("button");
+    nextBtn.type = "button";
+    nextBtn.className = "project-swiper-nav project-swiper-nav--next";
+    nextBtn.setAttribute("aria-label", "Next project");
+    nextBtn.innerHTML = "&#8250;";
+
+    const pagination = document.createElement("div");
+    pagination.className = "swiper-pagination project-swiper-pagination";
+
+    wrap.append(swiperEl, prevBtn, nextBtn, pagination);
+
+    return { wrap, swiperEl, prevBtn, nextBtn, pagination, cards };
+  }
+
+  function enableMobileSwiper(grid) {
+    if (registry.has(grid)) return;
+
+    const parent = grid.parentElement;
+    const nextSibling = grid.nextSibling;
+    const shell = buildSwiperShell(grid);
+
+    parent.insertBefore(shell.wrap, grid);
+    grid.remove();
+
+    const swiperInstance = new Swiper(shell.swiperEl, {
+      loop: true,
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
+      slidesPerView: 1,
+      spaceBetween: 22,
+      navigation: { nextEl: shell.nextBtn, prevEl: shell.prevBtn },
+      pagination: { el: shell.pagination, clickable: true },
+      a11y: { enabled: true },
+      keyboard: { enabled: true },
+    });
+
+    registry.set(grid, { ...shell, swiperInstance, parent, nextSibling });
+  }
+
+  function disableMobileSwiper(grid) {
+    const entry = registry.get(grid);
+    if (!entry) return;
+
+    entry.cards.forEach((card) => grid.appendChild(card)); // restore original order
+    entry.swiperInstance.destroy(true, true);
+    entry.parent.insertBefore(grid, entry.nextSibling);
+    entry.wrap.remove();
+
+    registry.delete(grid);
+  }
+
+  function applyForViewport() {
+    grids.forEach((grid) => {
+      if (mql.matches) {
+        enableMobileSwiper(grid);
+      } else {
+        disableMobileSwiper(grid);
+      }
+    });
+  }
+
+  applyForViewport();
+  mql.addEventListener("change", applyForViewport);
 }

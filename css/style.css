@@ -81,11 +81,11 @@
   --bg-surface: #ffffff;
   --bg-surface-2: #f1f2f9;
   --bg-elevated: #ffffff;
-  --border-color: rgba(17, 20, 45, 0.08);
+  --border-color:rgba(0, 0, 0, 0.389);
   --border-color-strong: rgba(17, 20, 45, 0.14);
   --text-primary: #14162b;
   --text-secondary: #565b78;
-  --text-muted: #8a8fa8;
+  --text-muted: #4e5267;
   --pill-bg: rgba(17, 20, 45, 0.04);
   --card-shadow: 0 24px 50px -24px rgba(30, 34, 70, 0.16);
   --card-border-glow: rgba(108, 92, 231, 0.08);
@@ -131,8 +131,8 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   transition:
-     background-color 0.45s ease,
-     color 0.45s ease;
+    background-color 0.45s ease,
+    color 0.45s ease;
 }
 
 img {
@@ -578,7 +578,7 @@ textarea:focus-visible,
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 4px;
+  gap: 20px;
   position: absolute;
   top: var(--navbar-height);
   left: 0;
@@ -786,7 +786,6 @@ body.nav-locked {
   font-size: clamp(1.05rem, 2.4vw, 1.3rem);
   color: var(--text-secondary);
   font-weight: 500;
-  margin-bottom: 16px;
   min-height: 1.6em;
 }
 
@@ -806,6 +805,7 @@ body.nav-locked {
   max-width: 520px;
   margin-inline: auto;
   margin-bottom: 30px;
+  margin-top: 16px;
 }
 
 .hero__cta {
@@ -842,9 +842,6 @@ body.nav-locked {
   border-radius: 50%;
   border: 1px solid rgba(108, 92, 231, 0.25);
   padding: 14px;
-  animation:
-    pulseRing 3.2s ease-out infinite,
-    spin 60s linear infinite;
 }
 
 .hero__photo {
@@ -854,9 +851,9 @@ body.nav-locked {
   border-radius: 50%;
   border: 3px solid var(--bg-surface);
   box-shadow:
-     0 0 0 4px rgba(108, 92, 231, 0.15),
-     0 0 50px rgba(108, 92, 231, 0.28),
-     0 30px 60px rgba(0, 0, 0, 0.35);
+    0 0 0 4px rgba(108, 92, 231, 0.15),
+    0 0 50px rgba(108, 92, 231, 0.28),
+    0 30px 60px rgba(0, 0, 0, 0.35);
   transition:
     transform var(--transition-base),
     box-shadow var(--transition-base);
@@ -879,13 +876,13 @@ body.nav-locked {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-color-strong);
   box-shadow:
-     0 16px 30px -16px rgba(0, 0, 0, 0.4),
-     0 0 24px rgba(108, 92, 231, 0.14);
+    0 16px 30px -16px rgba(0, 0, 0, 0.4),
+    0 0 24px rgba(108, 92, 231, 0.14);
   font-size: 1.1rem;
   animation: floatSlow 4s ease-in-out infinite;
   transition:
-  transform var(--transition-fast),
-  box-shadow var(--transition-fast);
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
 }
 
 .float-icon:hover {
@@ -1028,8 +1025,7 @@ img.icon-emojis {
 .tech-category:hover {
   transform: translateY(-6px);
   border-color: var(--accent-soft);
-  box-shadow:
-    0 24px 50px -22px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 24px 50px -22px rgba(0, 0, 0, 0.45);
 }
 
 .tech-category__title {
@@ -1131,11 +1127,7 @@ img.icon-emojis {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.12),
-    transparent 45%
-  );
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.12), transparent 45%);
   pointer-events: none;
 }
 
@@ -1198,6 +1190,117 @@ img.icon-emojis {
   padding: 4px 10px;
   border-radius: var(--radius-pill);
 }
+/* ==========================================================================
+   10a. PROJECT CATEGORIES (technology-wise Featured Projects)
+   ========================================================================== */
+.project-category {
+  margin-bottom: 64px;
+}
+
+.project-category:last-child {
+  margin-bottom: 0;
+}
+
+.project-category__header {
+  margin-bottom: 28px;
+}
+
+.project-category__title {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.project-category__desc {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  max-width: 640px;
+}
+
+/* ---- Swiper container ---- */
+.project-swiper-wrap {
+  position: relative;
+  padding-bottom: 46px; /* room for pagination dots */
+}
+
+.project-swiper .swiper-slide {
+  height: auto;
+  display: flex;
+}
+
+.project-swiper .project-card {
+  width: 100%;
+}
+
+/* ---- Custom nav arrows (reuse existing accent gradient) ---- */
+.project-swiper-nav {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: none; /* visible on all breakpoints — mobile now always uses Swiper */
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-color-strong);
+  color: var(--text-primary);
+  font-size: 1.4rem;
+  line-height: 1;
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.project-swiper-nav:hover {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  border-color: transparent;
+  color: #fff;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.project-swiper-nav--prev {
+  left: -6px;
+}
+.project-swiper-nav--next {
+  right: -6px;
+}
+
+.project-swiper-nav.swiper-button-disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* ---- Pagination dots ---- */
+.project-swiper-pagination {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.project-swiper-pagination .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--border-color-strong);
+  opacity: 1;
+  margin: 0 !important;
+  transition:
+    background-color var(--transition-fast),
+    width var(--transition-fast);
+}
+
+.project-swiper-pagination .swiper-pagination-bullet-active {
+  background: var(--accent);
+  width: 22px;
+  border-radius: var(--radius-pill);
+}
 
 /* ==========================================================================
    11. EXPERIENCE TIMELINE
@@ -1226,8 +1329,7 @@ img.icon-emojis {
 .timeline__item:hover {
   transform: translateY(-6px);
   border-color: var(--accent-soft);
-  box-shadow:
-    0 24px 50px -22px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 24px 50px -22px rgba(0, 0, 0, 0.45);
 }
 
 .timeline__dot {
@@ -1320,8 +1422,7 @@ img.icon-emojis {
 .edu-card:hover {
   transform: translateY(-6px);
   border-color: var(--accent-soft);
-  box-shadow:
-    0 24px 50px -22px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 24px 50px -22px rgba(0, 0, 0, 0.45);
 }
 
 .edu-card__icon {
@@ -1370,8 +1471,7 @@ img.icon-emojis {
 .cert-card:hover {
   transform: translateY(-6px) scale(1.03);
   border-color: var(--accent-soft);
-  box-shadow:
-    0 24px 50px -22px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 24px 50px -22px rgba(0, 0, 0, 0.45);
 }
 
 .cert-card__icon {
@@ -1384,12 +1484,13 @@ img.icon-emojis {
   border-radius: 18px;
   background: var(--pill-bg);
   border: 1px solid var(--border-color);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .cert-card__icon img {
-  width: 48px;
-  height: 48px;
+  width: 72px;
+  height: 72px;
+  border-radius: 5px;
   object-fit: contain;
 }
 
@@ -1408,7 +1509,151 @@ img.icon-emojis {
   color: var(--text-muted);
   font-family: var(--font-mono);
 }
+/* ==========================================================================
+   13a. CERTIFICATION JOURNEY (single showcase card + subject path)
+   ========================================================================== */
+.cert-journey {
+  position: relative;
+  /* max-width: 920px; */
+  margin-inline: auto;
+  text-align: center;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  box-shadow: inset 0 1px 0 var(--card-border-glow);
+  border-radius: var(--radius-lg);
+  padding: 40px 24px;
+}
 
+.cert-journey__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color-strong);
+  box-shadow:
+    0 16px 30px -16px rgba(0, 0, 0, 0.4),
+    0 0 24px rgba(108, 92, 231, 0.14);
+}
+
+.cert-journey__icon img {
+  width: 80px;
+  height:80px;
+  object-fit: contain;
+  border-radius:14px;
+}
+
+.cert-journey__title {
+  font-size: 1.25rem;
+  margin-bottom: 6px;
+}
+
+.cert-journey__issuer {
+  color: var(--accent-soft);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 18px;
+}
+
+.cert-journey__desc {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  max-width: 640px;
+  margin: 0 auto 34px;
+}
+
+.cert-journey__label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 22px;
+}
+
+/* ---- Subject cards (learning path) ---- */
+.subject-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  text-align: left;
+}
+
+/* Connecting line — only shown on wide screens where cards sit in one row,
+   see responsive.css for the breakpoint that reveals it */
+.subject-grid::before {
+  content: "";
+  display: none;
+  position: absolute;
+  top: 21px;
+  left: 6%;
+  right: 6%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--accent),
+    var(--accent-2),
+    var(--accent-soft)
+  );
+  opacity: 0.4;
+  z-index: 0;
+}
+
+.subject-card {
+  position: relative;
+  z-index: 1;
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 20px 18px;
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.subject-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: var(--accent-soft);
+  box-shadow: 0 24px 50px -22px rgba(0, 0, 0, 0.45);
+}
+
+.subject-card__step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  margin-bottom: 12px;
+  border-radius: 50%;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+}
+
+.subject-card__icon {
+  display: block;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.subject-card__title {
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+}
+
+.subject-card__desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
 /* ==========================================================================
    14. CONTACT
    ========================================================================== */
@@ -1612,4 +1857,9 @@ img.icon-emojis {
 .back-to-top:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 24px -10px rgba(108, 92, 231, 0.6);
+}
+
+.course-id{
+  text-decoration: underline;
+  
 }

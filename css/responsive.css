@@ -62,6 +62,11 @@
     box-shadow: none;
     padding: 0;
     height: auto;
+    max-height: none;
+    opacity: 1;
+    overflow: visible;
+    justify-content: center;
+    gap: 20%;
   }
 
   /* Hero: two-column layout begins */
@@ -100,11 +105,11 @@
   }
 
   /* About stats stay 3-col but breathe more */
-   .stats-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      max-width: 720px;
-   }
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 720px;
+  }
 
   .stat-card {
     padding: 28px 16px;
@@ -117,8 +122,8 @@
 
   /* Projects: two per row */
   .project-grid {
-     grid-template-columns: repeat(2, 1fr);
-     gap: 22px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
   }
 
   /* Education: two per row */
@@ -147,6 +152,14 @@
     justify-content: space-between;
     text-align: left;
   }
+  /* Certification journey: subjects in 2 columns on tablet */
+  .subject-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cert-journey {
+    padding: 48px 40px;
+  }
 }
 
 /* ==========================================================================
@@ -166,12 +179,12 @@
     width: 340px;
     height: 340px;
   }
-   
-   .stats-grid {
-      grid-template-columns: repeat(4, 1fr);
-      max-width: 1000px;
-   }
-   
+
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1000px;
+  }
+
   /* Tech stack: three categories per row */
   .tech-stack__grid {
     grid-template-columns: repeat(3, 1fr);
@@ -183,9 +196,13 @@
     gap: 26px;
   }
 
-   /* Certifications: four per row */
-   .cert-grid {
-      grid-template-columns: repeat(4, 1fr);
+  /* Certifications: four per row */
+  .cert-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  /* Certification journey: subjects in 3 columns on laptop */
+  .subject-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -219,6 +236,14 @@
 
   .timeline__dot {
     left: -43px;
+  }
+  /* Certification journey: full 5-column row + connecting learning-path line */
+  .subject-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .subject-grid::before {
+    display: block;
   }
 }
 
@@ -266,9 +291,14 @@
    PRINT (bonus: keeps resume-style output clean if printed)
    ========================================================================== */
 @media print {
-  .navbar, .scroll-progress,
-  .back-to-top, .float-icon, .hero__bg-grid, .hero__gradient,
-  .contact__form, .theme-toggle {
+  .navbar,
+  .scroll-progress,
+  .back-to-top,
+  .float-icon,
+  .hero__bg-grid,
+  .hero__gradient,
+  .contact__form,
+  .theme-toggle {
     display: none !important;
   }
 
